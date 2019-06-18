@@ -14,13 +14,12 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
         <style>{`
             body {
               margin: 0;
               padding: 0;
               font-family: Raleway, sans-serif;
-              font-display: auto;
               font-size: 16px;
               line-height: 1;
               overflow-x: hidden;
@@ -36,6 +35,8 @@ class MyDocument extends Document {
               font-display: auto;
               font-weight: 700;
               margin: 0;
+              padding: 0;
+
             }
             
             h1 {
@@ -43,7 +44,10 @@ class MyDocument extends Document {
             }
             
             h2 {
+              text-align: center;
+              padding: 40px 0;
               font-size: 36px;
+              color: var(--dark-color);
             }
             
             h3 {
@@ -57,16 +61,20 @@ class MyDocument extends Document {
             h5 {
               font-size: 16px;
             }
+
             ul, li, button, a {
               margin: 0;
               padding: 0;
               font-size: 16px;
             }
+
             button {
               background-color: transparent;
               border: none;
               color: inherit;
+              cursor: pointer;
             }
+
             .primary-btn, .secondary-btn {
               height: 2.2em;
               font-size: 14px;
@@ -79,22 +87,58 @@ class MyDocument extends Document {
               cursor: pointer;
               outline: none;
             }
+
             .secondary-btn {
               background-color: transparent;
               border: 1px solid var(--light-color);
               color: var(--light-color);
             }
+
             .primary-btn:hover,  .secondary-btn:hover {
               opacity: 0.8;
               transition: 0.2s linear;
             }
+
             .primary-btn:active, .secondary-btn:active  {
               opacity: 0.4;
             }
+
+            .mark-underline {
+              color: inherit;
+              margin: 10px;
+              background: linear-gradient(180deg, transparent 50%, var(--main-color) 0);
+            }
+
             :root {
               --main-color: #ff6f61;
+              --main-light-color: rgba(255, 111, 97, 0.45);
               --dark-color: #262320;
               --light-color: #ffffff;
+              --light-vis-color: rgba(255, 255, 255, 0.2);
+              --gray-color: #dcdcdc;
+            }
+            
+            .md-section p {
+              margin-top: 10px;
+            }
+            .md-section ul {
+              list-style-type: none;
+            }
+            .md-section li {
+              margin-top: 5px;
+              margin-left: 10px;
+              position: relative;
+            }
+            .md-section li::before{
+              content: '';
+              position: absolute;
+              top: 0.25em;
+              left: -1.4em;
+              width: 7px;
+              height: 7px;
+              border-radius: 7px;
+              border: solid 4px var(--main-color);
+              background-color: var(--light-color);
             }
           `}</style>
         <body>

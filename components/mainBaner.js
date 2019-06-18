@@ -1,4 +1,4 @@
-import MainSlider from './mainSlider';
+import MainSlider from './_MainBaner/MainSlider';
 
 const MainBaner = props => {
   return (
@@ -17,14 +17,14 @@ const MainBaner = props => {
       </div>
       <style jsx>{`
         .main-banner {
-          height: 1000px;
-          background-image: url('/static/img/bg1.jpg');
+          height: 800px;
+          background-image: url('static/img/bg1.jpg');
           background-position: top center;
         }
         .main-banner__overlay {
           height: 100%;
           background-image: linear-gradient(to bottom, rgba(32, 27, 27, 0.4), var(--dark-color));
-          padding: 30px;
+          padding: 30px 0;
         }
         .main-banner__head {
           width: 600px;

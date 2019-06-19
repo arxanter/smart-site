@@ -43,7 +43,10 @@ export default function Menu(props) {
           </ul>
           <div className="nav__contact">
             <a className="nav__contact__phone" href="tel:+74956450872">
-              <img src="static/icons/phone.svg" />
+              <div className="phone__icon">
+                <img src="static/icons/phone-white.svg" />
+              </div>
+
               <span>+ 7 (495) 645 08 72</span>
             </a>
             <button className="nav__contact__btn primary-btn">Заказать звонок</button>
@@ -103,6 +106,7 @@ export default function Menu(props) {
           }
           .nav__contact__phone {
             display: flex;
+            align-items: center;
             margin-right: 15px;
             line-height: 2.4em;
             font-family: auto;
@@ -110,9 +114,18 @@ export default function Menu(props) {
           .nav__contact__phone:hover {
             opacity: 0.8
           }
-          .nav__contact__phone img {
-            width: 2.5em;
-            height: 2.5em;
+          .nav__contact__phone .phone__icon {
+            width: 18px;
+            height: 18px;
+            padding: 3px;
+            margin: 5px;
+            position: relative;
+            border-radius: 50%;
+            background-color: var(--main-color);
+          }
+          .phone__icon img {
+            position: relative;
+            top: -5px;
           }
 
 

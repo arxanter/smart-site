@@ -6,31 +6,31 @@ export default function mainSlider() {
   const systems = [
     {
       name: 'Освещение',
-      icon: 'light.svg',
+      iconAlias: 'light',
       img: 'light.jpg',
       key: 1,
     },
     {
       name: 'Климат',
-      icon: 'climate.svg',
+      iconAlias: 'climate',
       img: 'climate.jpg',
       key: 2,
     },
     {
       name: 'Безопасность',
-      icon: 'security.svg',
+      iconAlias: 'security',
       img: 'security.jpg',
       key: 3
     },
     {
       name: 'Мультимедиа',
-      icon: 'multimedia.svg',
+      iconAlias: 'multimedia',
       img: 'multimedia.jpg',
       key: 4
     },
     {
       name: 'Мониторинг',
-      icon: 'monitoring.svg',
+      iconAlias: 'monitoring',
       img: 'monitoring.jpg',
       key: 5
     },
@@ -50,10 +50,10 @@ export default function mainSlider() {
             <span>Элементы умного дома</span>
             <div className="slider__navigation__controls">
               <button>
-                <img src="/static/icons/arrow-left.svg" />
+                <img src="/static/icons/_arrows/arrow-bold-left-white.svg" />
               </button>
               <button>
-                <img src="/static/icons/arrow-right.svg" />
+                <img src="/static/icons/_arrows/arrow-bold-right-white.svg" />
               </button>
             </div>
           </div>
@@ -132,6 +132,9 @@ export default function mainSlider() {
         }
         .slider__navigation__controls {
           margin-left: 20px;
+        }
+        .slider__navigation__controls button {
+          width: 32px;
         }
         .slider__navigation__controls button+ button {
           margin-left: 10px;

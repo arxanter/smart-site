@@ -4,31 +4,31 @@ export default function BlockElements() {
   const systems = [
     {
       name: 'Освещение',
-      icon: 'light.svg',
+      iconAlias: 'light',
       img: 'light.jpg',
       key: 1,
     },
     {
       name: 'Климат',
-      icon: 'climate.svg',
+      iconAlias: 'climate',
       img: 'climate.jpg',
       key: 2,
     },
     {
       name: 'Безопасность',
-      icon: 'security.svg',
+      iconAlias: 'security',
       img: 'security.jpg',
       key: 3,
     },
     {
       name: 'Мультимедиа',
-      icon: 'multimedia.svg',
+      iconAlias: 'multimedia',
       img: 'multimedia.jpg',
       key: 4,
     },
     {
       name: 'Мониторинг',
-      icon: 'monitoring.svg',
+      iconAlias: 'monitoring',
       img: 'monitoring.jpg',
       key: 5,
     },
@@ -37,8 +37,8 @@ export default function BlockElements() {
     head: 'Климат',
     textSource: 'climate.md',
     mainImage: 'climateMain.jpg',
-    images: ['climate.jpg', 'climateMain.jpg']
-  }
+    images: ['climate.jpg', 'climateMain.jpg'],
+  };
   const activeIndex = 2;
   return (
     <>
@@ -50,16 +50,25 @@ export default function BlockElements() {
           <aside>
             {systems.map((el, index) => {
               return (
-                <button className={`elements__item ${el.key === activeIndex ? 'elements__item--active' : ''}`} key={el.key}>
+                <button
+                  className={`elements__item ${el.key === activeIndex ? 'elements__item--active' : ''}`}
+                  key={el.key}
+                >
                   <div className="elements__item__icon">
-                    <img src={`static/icons/${el.icon}`} alt={`${el.name}-icon`} style={{width: '100%', height: '100%'}}/>
+                    <img
+                      src={`static/icons/_elements/${el.iconAlias}-${
+                        el.key === activeIndex ? 'white' : 'black'
+                      }.svg`}
+                      alt={`${el.name}-icon`}
+                      style={{ width: '100%', height: '100%' }}
+                    />
                   </div>
                   <span>{el.name}</span>
                 </button>
               );
             })}
           </aside>
-          <ArticalElement content={itemContent}/>
+          <ArticalElement content={itemContent} />
         </section>
       </div>
       <style jsx>{`
@@ -73,7 +82,6 @@ export default function BlockElements() {
           max-width: 1200px;
           height: 600px;
           color: var(--dark-color);
-          
         }
         .elements__container aside {
           width: 350px;

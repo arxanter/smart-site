@@ -27,13 +27,13 @@ export default function ArticalElement(props) {
           </div>
           <div className="content__slider">
             <button>
-              <img src="/static/icons/arrow-left.svg" />
+              <img src="/static/icons/_arrows/arrow-bold-left-black.svg" />
             </button>
             <div className="content__slider__image">
              <img src="/static/img/climate.jpg" alt="" style={{ width: '100%', height: '100%' }} />
             </div>
             <button>
-              <img src="/static/icons/arrow-right.svg" />
+              <img src="/static/icons/_arrows/arrow-bold-right-black.svg" />
             </button>
           </div>
         </aside>
@@ -82,6 +82,9 @@ export default function ArticalElement(props) {
           height: 165px;
           margin: 0 5px;
           border: 10px solid var(--light-vis-color);
+        }
+        .content__slider button {
+          width: 32px;
         }
       `}</style>
     </>

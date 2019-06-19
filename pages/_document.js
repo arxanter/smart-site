@@ -30,6 +30,11 @@ class MyDocument extends Document {
               text-decoration: none;
               color: inherit;
             }
+
+            span, p {
+              line-height: 1.5;
+            }
+
             h1, h2, h3, h4, h5, h6 {
               font-family: Helvetica, sans-serif;
               font-display: auto;
@@ -52,6 +57,7 @@ class MyDocument extends Document {
             
             h3 {
               font-size: 21px;
+              padding: 20px 0;
             }
             
             h4 {
@@ -62,10 +68,19 @@ class MyDocument extends Document {
               font-size: 16px;
             }
 
+            ul {
+              list-style-type: none;
+            }
+
             ul, li, button, a {
               margin: 0;
               padding: 0;
               font-size: 16px;
+            }
+
+            img {
+              width: 100%;
+              height: 100%;
             }
 
             button {

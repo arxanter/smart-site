@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;stroke-width:2.16;stroke-linecap:round;stroke-linejoin:round;}
+	.st1{fill:none;stroke:#000000;stroke-width:1.633;stroke-linecap:round;stroke-linejoin:round;}
+</style>
+<g id="Page-1_4_">
+	<g id="Smart-home_Main_4_" transform="translate(-95.000000, -1969.000000)">
+		<g id="elements-new_4_" transform="translate(-8.000000, 1159.000000)">
+			<g id="left_4_" transform="translate(67.000000, 213.190349)">
+				<g id="monitoring-icon" transform="translate(18.452830, 575.164703)">
+					<g id="icon_3_" transform="translate(18.886792, 23.059348)">
+						<path id="Rectangle-path" class="st0" d="M3.7,4.8h34.9c0.8,0,1.4,0.6,1.4,1.4v20.9c0,0.8-0.6,1.4-1.4,1.4H3.7
+							c-0.8,0-1.4-0.6-1.4-1.4V6.2C2.3,5.4,2.9,4.8,3.7,4.8z"/>
+						<path id="Shape_4_" class="st1" d="M21.2,28.6v8.6"/>
+						<path class="st1" d="M28.1,37.4H14.3"/>
+						<g id="Group" transform="translate(4.105824, 4.021979)">
+							<g>
+								<rect x="2.4" y="4.5" class="st1" width="8.6" height="6.5"/>
+								<g id="Oval" transform="translate(12.317473, 0.804396)">
+									<g>
+										<ellipse cx="3.3" cy="5.2" rx="1" ry="1"/>
+										<ellipse cx="6.4" cy="5.2" rx="1" ry="1"/>
+										<ellipse cx="9.4" cy="5.2" rx="1" ry="1"/>
+										<ellipse cx="12.5" cy="5.2" rx="1" ry="1"/>
+									</g>
+									<g transform="translate(0.000000, 3.217583)">
+										<ellipse cx="3.3" cy="5.6" rx="1" ry="1"/>
+										<ellipse cx="6.4" cy="5.6" rx="1" ry="1"/>
+										<ellipse cx="9.4" cy="5.6" rx="1" ry="1"/>
+										<ellipse cx="12.5" cy="5.6" rx="1" ry="1"/>
+										<ellipse cx="15.4" cy="5.6" rx="1" ry="1"/>
+										<ellipse cx="18.5" cy="5.6" rx="1" ry="1"/>
+									</g>
+								</g>
+							</g>
+							<g transform="translate(0.000000, 9.652750)">
+								<rect x="23.1" y="4.6" class="st1" width="8.6" height="6.5"/>
+								<g transform="translate(0.000000, 0.804396)">
+									<g transform="translate(5.748154, 0.000000)">
+										<ellipse cx="12.7" cy="5.2" rx="1" ry="1"/>
+										<ellipse cx="9.7" cy="5.2" rx="1" ry="1"/>
+										<ellipse cx="6.6" cy="5.2" rx="1" ry="1"/>
+										<ellipse cx="3.6" cy="5.2" rx="1" ry="1"/>
+									</g>
+									<g transform="translate(0.000000, 3.217583)">
+										<ellipse cx="18.5" cy="5.7" rx="1" ry="1"/>
+										<ellipse cx="15.4" cy="5.7" rx="1" ry="1"/>
+										<ellipse cx="12.4" cy="5.7" rx="1" ry="1"/>
+										<ellipse cx="9.3" cy="5.7" rx="1" ry="1"/>
+										<ellipse cx="6.4" cy="5.7" rx="1" ry="1"/>
+										<ellipse cx="3.3" cy="5.7" rx="1" ry="1"/>
+									</g>
+								</g>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

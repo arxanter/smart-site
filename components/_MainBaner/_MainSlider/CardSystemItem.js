@@ -1,24 +1,28 @@
 export default function CardSystemItem(props) {
+  const fullIconAlias = `/static/icons/_elements/${props.item.iconAlias}`;
   return (
     <>
       <div className={`card ${props.isActive ? 'card--active' : ''}`}>
         <div className="card__image">
-          <img src={`/static/img/${props.item.img}`} alt={props.item.name} style={{width: '100%', height: '100%'}} />
+          <img src={`/static/img/${props.item.img}`} alt={props.item.name} style={{ width: '100%', height: '100%' }} />
           <div className="card__icon">
-            <img  src={`/static/icons/${props.item.icon}`} alt={`${props.item.name} иконка`} style={{width: '100%', height: '100%'}}/>
+            <img
+              src={`${fullIconAlias}${props.isActive ? '-white' : '-black'}.svg`}
+              alt={`${props.item.name} иконка`}
+              style={{ width: '100%', height: '100%' }}
+            />
           </div>
           <div className="card__button">
             <button className=" secondary-btn">Подробнее</button>
           </div>
-          <div className="card__overlay"></div>
+          <div className="card__overlay" />
         </div>
         <h3 className="card__title">{props.item.name}</h3>
       </div>
       <style jsx>{`
-
         .card {
-            margin-left: 40px;
-          }
+          margin-left: 40px;
+        }
         .card__image {
           width: 320px;
           height: 200px;
@@ -27,7 +31,7 @@ export default function CardSystemItem(props) {
           flex-direction: column;
           align-items: center;
         }
-        .card__image:hover .card__overlay  {
+        .card__image:hover .card__overlay {
           display: block;
         }
         .card__image:hover .card__button {
@@ -85,6 +89,9 @@ export default function CardSystemItem(props) {
           height: 265px;
           border: 4px solid var(--main-color);
         }
+        .card--active .card__icon {
+          background-color: var(--main-color);
+        }
         .card:not(.card--active) .card__title:after {
           content: '';
           position: absolute;
@@ -94,7 +101,6 @@ export default function CardSystemItem(props) {
           right: -60px;
           background-color: var(--light-color);
         }
-
       `}</style>
     </>
   );

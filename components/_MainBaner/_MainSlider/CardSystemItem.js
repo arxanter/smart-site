@@ -66,7 +66,6 @@ export default function CardSystemItem(props) {
         }
         .card__title {
           position: relative;
-          line-height: 2em;
           display: inline-block;
         }
         .card-active .card__title {

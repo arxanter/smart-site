@@ -49,7 +49,7 @@ export default function Menu(props) {
 
               <span>+ 7 (495) 645 08 72</span>
             </a>
-            <button className="nav__contact__btn primary-btn">Заказать звонок</button>
+            <button className="nav__contact__btn btn-primary">Заказать звонок</button>
           </div>
         </nav>
       </div>

@@ -5,7 +5,7 @@ import BlockElements from '../components/BlockElements';
 import BlockPoints from '../components/BlockPoints';
 import BlockSolutions from '../components/BlockSolutions';
 import BlockMarketing from '../components/BlockMarketing';
-import BlockWorks from '../components/BlockWorks';
+import BlockPortfolio from '../components/BlockPortfolio';
 import BlockContactForm from '../components/BlockContactForm';
 
 const Index = () => (
@@ -17,7 +17,7 @@ const Index = () => (
       <BlockPoints />
       <BlockSolutions />
       <BlockMarketing />
-      <BlockWorks />
+      <BlockPortfolio />
       <BlockContactForm />
     </main>
     <MainFooter />

@@ -54,7 +54,7 @@ export default function BlockContactForm() {
             </label>
           </form>
           <div className="contact-form__action">
-            <button className="secondary-btn">Заказать проект</button>
+            <button className="btn-secondary">Заказать проект</button>
           </div>
         </div>
       </section>
@@ -94,7 +94,7 @@ export default function BlockContactForm() {
         .contact__info__icon {
           width: 24px;
           height: 24px;
-          padding: 5px;
+          padding: 7px;
           margin: 0 10px;
           border-radius: 50%;
           background-color: var(--main-color);

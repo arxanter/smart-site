@@ -10,7 +10,7 @@ const MainBaner = props => {
               Системы <mark>Умного дома</mark>
             </h1>
             <p>Монтаж и проектирование систем Автоматизации частных домов и коммерческой недвижимости</p>
-            <button className="secondary-btn">Заказать проект</button>
+            <button className="btn-secondary">Заказать проект</button>
           </section>
           <MainSlider/>
         </div>

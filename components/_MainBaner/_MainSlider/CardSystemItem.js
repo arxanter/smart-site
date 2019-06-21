@@ -13,7 +13,7 @@ export default function CardSystemItem(props) {
             />
           </div>
           <div className="card__button">
-            <button className=" secondary-btn">Подробнее</button>
+            <button className=" btn-secondary">Подробнее</button>
           </div>
           <div className="card__overlay" />
         </div>

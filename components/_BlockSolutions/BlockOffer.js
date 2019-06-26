@@ -1,7 +1,7 @@
 export default function BlockOffer({offer}) {
   return (
     <>
-    <artical>
+    <article>
       <div className="block-numbers">
         <div className='block-numbers__item'>
           <span className="main">{offer.square} кв м</span>
@@ -20,7 +20,7 @@ export default function BlockOffer({offer}) {
         <h5>Описание</h5>
         <p>{offer.info}</p>
       </div>
-    </artical>
+    </article>
     <style jsx>{`
       span, h5, p {
         color: var(--dark-color);

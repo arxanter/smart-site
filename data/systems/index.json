@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Освещение",
+    "iconAlias": "light",
+    "img": "light.jpg",
+    "imgGalery": ["light.jpg"],
+    "article": "light.md"
+  },
+  {
+    "name": "Климат",
+    "iconAlias": "climate",
+    "img": "climate.jpg",
+    "imgGalery": ["climate.jpg"],
+    "article": "climate.md"
+  },
+  {
+    "name": "Безопасность",
+    "iconAlias": "security",
+    "img": "security.jpg",
+    "imgGalery": ["security.jpg"],
+    "article": "security.md"
+    
+  },
+  {
+    "name": "Мультимедиа",
+    "iconAlias": "multimedia",
+    "img": "multimedia.jpg",
+    "imgGalery": ["multimedia.jpg"],
+    "article": "multimedia.md"
+  },
+  {
+    "name": "Мониторинг",
+    "iconAlias": "monitoring",
+    "img": "monitoring.jpg",
+    "imgGalery": ["monitoring.jpg"],
+    "article": "monitoring.md"
+  }
+]

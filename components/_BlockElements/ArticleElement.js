@@ -2,35 +2,28 @@ import ReactMarkdown from 'react-markdown';
 import fetch from 'isomorphic-unfetch';
 import { useState, useEffect } from 'react';
 
-export default function ArticalElement(props) {
-  const [content, setContent] = useState('');
-  useEffect(() => {
-    fetch('static/articales/climate.md')
-      .then(r => r.text())
-      .then(res => {
-        setContent(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  });
-
+export default function ArticleElement({article, img, imgGalery}) {
   return (
     <>
       <article className="container">
         <section className="content md-section">
-          <ReactMarkdown source={content} />
+          <ReactMarkdown source={article} />
         </section>
         <aside>
           <div className="content__main-image">
-            <img src="/static/img/climate.jpg" alt="" style={{ width: '100%', height: '100%' }} />
+            <img src={`/static/img/${img}`} alt="" style={{ width: '100%', height: '100%' }} />
           </div>
           <div className="content__slider">
             <button>
               <img src="/static/icons/_arrows/arrow-bold-left-black.svg" />
             </button>
             <div className="content__slider__image">
-             <img src="/static/img/climate.jpg" alt="" style={{ width: '100%', height: '100%' }} />
+              {imgGalery.map((imgItem,index) => {
+                return (
+                  <img src={`/static/img/${imgItem}`} alt="" key={index} style={{ width: '100%', height: '100%' }} />
+                )
+              })}
+
             </div>
             <button>
               <img src="/static/icons/_arrows/arrow-bold-right-black.svg" />
@@ -41,14 +34,16 @@ export default function ArticalElement(props) {
       <style jsx>{`
         .container {
           display: flex;
-          width: 100%;
-          margin: 0 20px;
+          flex-shrink: 0;
+          flex-grow: 0;
+          width: 800px;
+          margin: 20px;
           padding: 20px 0 20px 20px;
           background-color: var(--main-color);
         }
         .content {
           width: 50%;
-          height: calc(100% - 40px);
+          height: calc(100% - 60px);
           padding: 20px;
           margin-top: 0.5em;
           line-height: 1.5;

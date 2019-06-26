@@ -1,45 +1,6 @@
-import ArticalElement from './_BlockElements/ArticalElement';
+import ArticleElement from './_BlockElements/ArticleElement';
 
-export default function BlockElements() {
-  const systems = [
-    {
-      name: 'Освещение',
-      iconAlias: 'light',
-      img: 'light.jpg',
-      key: 1,
-    },
-    {
-      name: 'Климат',
-      iconAlias: 'climate',
-      img: 'climate.jpg',
-      key: 2,
-    },
-    {
-      name: 'Безопасность',
-      iconAlias: 'security',
-      img: 'security.jpg',
-      key: 3,
-    },
-    {
-      name: 'Мультимедиа',
-      iconAlias: 'multimedia',
-      img: 'multimedia.jpg',
-      key: 4,
-    },
-    {
-      name: 'Мониторинг',
-      iconAlias: 'monitoring',
-      img: 'monitoring.jpg',
-      key: 5,
-    },
-  ];
-  const itemContent = {
-    head: 'Климат',
-    textSource: 'climate.md',
-    mainImage: 'climateMain.jpg',
-    images: ['climate.jpg', 'climateMain.jpg'],
-  };
-  const activeIndex = 2;
+export default function BlockElements(props) {
   return (
     <>
       <div id="elements">
@@ -48,16 +9,19 @@ export default function BlockElements() {
         </h2>
         <section className="elements__container">
           <aside>
-            {systems.map((el, index) => {
+            {props.systemsList.map((el, index) => {
               return (
                 <button
-                  className={`elements__item ${el.key === activeIndex ? 'elements__item--active' : ''}`}
-                  key={el.key}
+                  className={`elements__item ${index === props.indexSystem ? 'elements__item--active' : ''}`}
+                  onClick={() => {
+                    props.changeIndexSystem(index);
+                  }}
+                  key={index}
                 >
                   <div className="elements__item__icon">
                     <img
                       src={`static/icons/_elements/${el.iconAlias}-${
-                        el.key === activeIndex ? 'white' : 'black'
+                        index === props.indexSystem ? 'white' : 'black'
                       }.svg`}
                       alt={`${el.name}-icon`}
                       style={{ width: '100%', height: '100%' }}
@@ -68,7 +32,13 @@ export default function BlockElements() {
               );
             })}
           </aside>
-          <ArticalElement content={itemContent} />
+          <div className="elements__slider">
+            <div>
+              {props.systemsData.map((item, index) => (
+                <ArticleElement {...item} key={index} />
+              ))}
+            </div>
+          </div>
         </section>
       </div>
       <style jsx>{`
@@ -87,9 +57,10 @@ export default function BlockElements() {
           width: 350px;
           display: flex;
           flex-direction: column;
+          flex-shrink: 0;
           justify-content: space-between;
         }
-        .elements__container artical {
+        .elements__container article {
           width: 100%;
           height: 500px;
           border: 1px solid black;
@@ -125,6 +96,17 @@ export default function BlockElements() {
         }
         .elements__item--active .elements__item__icon {
           box-shadow: none;
+        }
+        .elements__slider {
+          margin: 0 auto;
+          overflow: hidden;
+          width: 800px;
+        }
+        .elements__slider div {
+          display: flex;
+          height: 100%;
+          transform: translateX(${-860 * props.indexSystem}px);
+          transition: .6s ease-out;
         }
       `}</style>
     </>

@@ -127,6 +127,10 @@ button:hover {
 button:active {
   opacity: 0.4;
 }
+button:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
 
 .mark-underline {
   color: inherit;

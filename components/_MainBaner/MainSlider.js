@@ -1,47 +1,31 @@
+import {useEffect, useState} from 'react';
+import fetch from 'isomorphic-unfetch';
 import CardSystemItem from './_MainSlider/CardSystemItem';
 
-export default function mainSlider() {
-  const count = 3;
-  const maxCount = 6;
-  const systems = [
-    {
-      name: 'Освещение',
-      iconAlias: 'light',
-      img: 'light.jpg',
-      key: 1,
-    },
-    {
-      name: 'Климат',
-      iconAlias: 'climate',
-      img: 'climate.jpg',
-      key: 2,
-    },
-    {
-      name: 'Безопасность',
-      iconAlias: 'security',
-      img: 'security.jpg',
-      key: 3
-    },
-    {
-      name: 'Мультимедиа',
-      iconAlias: 'multimedia',
-      img: 'multimedia.jpg',
-      key: 4
-    },
-    {
-      name: 'Мониторинг',
-      iconAlias: 'monitoring',
-      img: 'monitoring.jpg',
-      key: 5
-    },
-  ]
+export default function MainSlider(props) {
+  const [systemsCount] = useState(props.systemsList ? props.systemsList.length : 1);
+  const [offsetSlider, setOffsetSlider] = useState(0);
+
+  const leftIconPath = () => {
+    return `/static/icons/_arrows/arrow-${props.indexSystem === 0 ? 'thin' : 'bold'}-left-white.svg`; 
+  }
+  const rightIconPath = () => {
+    return `/static/icons/_arrows/arrow-${props.indexSystem === systemsCount ? 'thin' : 'bold'}-right-white.svg`; 
+  }
+  const eventMove = (direction) => {
+    if (direction === '+' && props.indexSystem + 1 < systemsCount) props.changeIndexSystem(props.indexSystem + 1);
+    if (direction  === '-' && props.indexSystem - 1 >= 0) props.changeIndexSystem(props.indexSystem - 1);
+  }
+  useEffect(()=>{
+    setOffsetSlider(-360*props.indexSystem)
+  });
   return (
     <>
       <section className="slider">
         <aside className="slider__sidebar">
           <span className="slider__count">
-            0{count}
-            <mark>/ 0{maxCount}</mark>
+            0{props.indexSystem + 1}
+            <mark>/ 0{systemsCount}</mark>
           </span>
           <div className="slider__indicator" />
         </aside>
@@ -49,17 +33,17 @@ export default function mainSlider() {
           <div className="slider__navigation">
             <span>Элементы умного дома</span>
             <div className="slider__navigation__controls">
-              <button>
-                <img src="/static/icons/_arrows/arrow-bold-left-white.svg" />
+              <button onClick={() => {eventMove('-')}} disabled={props.indexSystem === 0}>
+                <img src={leftIconPath()} />
               </button>
-              <button>
-                <img src="/static/icons/_arrows/arrow-bold-right-white.svg" />
+              <button onClick={() => {eventMove('+')}} disabled={props.indexSystem === systemsCount - 1}>
+                <img src={rightIconPath()} />
               </button>
             </div>
           </div>
           <div className="slider__body">
             {
-              systems.map((el, index) => <CardSystemItem item={el} isActive={index === 0} key={el.key}/>)
+              props.systemsList.map((el, index) => <CardSystemItem item={el} isActive={index === props.indexSystem} key={index} onChange={() => {props.changeIndexSystem(index)}}/>)
             }
           </div>
         </section>
@@ -112,7 +96,7 @@ export default function mainSlider() {
           position: absolute;
           bottom: 0;
           left: -1.5px;
-          height: calc(200px * ${count} / ${maxCount});
+          height: calc(240px * ${props.indexSystem + 1} / ${systemsCount});
           width: 6px;
           background-color: var(--main-color);
           opacity: 0.8;
@@ -123,8 +107,9 @@ export default function mainSlider() {
           height: 100%;
           width: 100%;
           overflow: hidden;
-          padding-left: 60px;
+          margin-left: 60px;
           padding-top: 60px;
+          position: relative;
         }
         .slider__navigation {
           display: flex;
@@ -141,10 +126,14 @@ export default function mainSlider() {
         }
         .slider__body {
           display: flex;
+          position: relative;
           align-items: center;
           margin-top: 20px;
+          left: ${offsetSlider}px;
+          transition: left 0.6s ease-out; 
         }
       `}</style>
     </>
   );
 }
+

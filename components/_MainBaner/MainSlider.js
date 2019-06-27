@@ -1,5 +1,4 @@
-import {useEffect, useState} from 'react';
-import fetch from 'isomorphic-unfetch';
+import { useEffect, useState } from 'react';
 import CardSystemItem from './_MainSlider/CardSystemItem';
 
 export default function MainSlider(props) {
@@ -7,17 +6,17 @@ export default function MainSlider(props) {
   const [offsetSlider, setOffsetSlider] = useState(0);
 
   const leftIconPath = () => {
-    return `/static/icons/_arrows/arrow-${props.indexSystem === 0 ? 'thin' : 'bold'}-left-white.svg`; 
-  }
+    return `/static/icons/_arrows/arrow-${props.indexSystem === 0 ? 'thin' : 'bold'}-left-white.svg`;
+  };
   const rightIconPath = () => {
-    return `/static/icons/_arrows/arrow-${props.indexSystem === systemsCount ? 'thin' : 'bold'}-right-white.svg`; 
-  }
-  const eventMove = (direction) => {
+    return `/static/icons/_arrows/arrow-${props.indexSystem === systemsCount ? 'thin' : 'bold'}-right-white.svg`;
+  };
+  const eventMove = direction => {
     if (direction === '+' && props.indexSystem + 1 < systemsCount) props.changeIndexSystem(props.indexSystem + 1);
-    if (direction  === '-' && props.indexSystem - 1 >= 0) props.changeIndexSystem(props.indexSystem - 1);
-  }
-  useEffect(()=>{
-    setOffsetSlider(-360*props.indexSystem)
+    if (direction === '-' && props.indexSystem - 1 >= 0) props.changeIndexSystem(props.indexSystem - 1);
+  };
+  useEffect(() => {
+    setOffsetSlider(-360 * props.indexSystem);
   });
   return (
     <>
@@ -33,18 +32,35 @@ export default function MainSlider(props) {
           <div className="slider__navigation">
             <span>Элементы умного дома</span>
             <div className="slider__navigation__controls">
-              <button onClick={() => {eventMove('-')}} disabled={props.indexSystem === 0}>
+              <button
+                onClick={() => {
+                  eventMove('-');
+                }}
+                disabled={props.indexSystem === 0}
+              >
                 <img src={leftIconPath()} />
               </button>
-              <button onClick={() => {eventMove('+')}} disabled={props.indexSystem === systemsCount - 1}>
+              <button
+                onClick={() => {
+                  eventMove('+');
+                }}
+                disabled={props.indexSystem === systemsCount - 1}
+              >
                 <img src={rightIconPath()} />
               </button>
             </div>
           </div>
           <div className="slider__body">
-            {
-              props.systemsList.map((el, index) => <CardSystemItem item={el} isActive={index === props.indexSystem} key={index} onChange={() => {props.changeIndexSystem(index)}}/>)
-            }
+            {props.systemsList.map((el, index) => (
+              <CardSystemItem
+                item={el}
+                isActive={index === props.indexSystem}
+                key={index}
+                onChange={() => {
+                  props.changeIndexSystem(index);
+                }}
+              />
+            ))}
           </div>
         </section>
       </section>
@@ -121,7 +137,7 @@ export default function MainSlider(props) {
         .slider__navigation__controls button {
           width: 32px;
         }
-        .slider__navigation__controls button+ button {
+        .slider__navigation__controls button + button {
           margin-left: 10px;
         }
         .slider__body {
@@ -130,10 +146,9 @@ export default function MainSlider(props) {
           align-items: center;
           margin-top: 20px;
           left: ${offsetSlider}px;
-          transition: left 0.6s ease-out; 
+          transition: left 0.6s ease-out;
         }
       `}</style>
     </>
   );
 }
-

@@ -3,7 +3,7 @@
     "name": "Освещение",
     "iconAlias": "light",
     "img": "light.jpg",
-    "imgGalery": ["light.jpg"],
+    "imgGalery": ["light.jpg", "climate.jpg"],
     "article": "light.md"
   },
   {

@@ -1,6 +1,11 @@
+import { useState } from 'react';
 import BlockOffer from './_BlockSolutions/BlockOffer';
 
 export default function BlockSolutions() {
+  const [activeType, setActiveType] = useState('Частный дом');
+
+  const types = ['Частный дом', 'Квартира', 'Гостиница'];
+
   const offer = {
     name: 'Объект Вадим Дегтярев',
     square: 180,
@@ -20,15 +25,20 @@ export default function BlockSolutions() {
         <div>
           <nav>
             <ul>
-              <li className="nav-item">
-                <button className="btn-primary">Частный дом</button>
-              </li>
-              <li className="nav-item">
-                <button className="btn-secondary-black">Квартира</button>
-              </li>
-              <li className="nav-item">
-                <button className="btn-secondary-black">Гостиница</button>
-              </li>
+              {types.map((type, index) => {
+                return (
+                  <li className="nav-item" key={index}>
+                    <button
+                      className={activeType == type ? 'btn-primary' : 'btn-secondary-black'}
+                      onClick={() => {
+                        setActiveType(type);
+                      }}
+                    >
+                      {type}
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
           <div className="container">

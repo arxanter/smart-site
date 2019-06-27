@@ -10,6 +10,7 @@ export default function BlockElements(props) {
         <section className="elements__container">
           <aside>
             {props.systemsList.map((el, index) => {
+              const colorIcon = index === props.indexSystem ? 'white' : 'black';
               return (
                 <button
                   className={`elements__item ${index === props.indexSystem ? 'elements__item--active' : ''}`}
@@ -19,13 +20,7 @@ export default function BlockElements(props) {
                   key={index}
                 >
                   <div className="elements__item__icon">
-                    <img
-                      src={`static/icons/_elements/${el.iconAlias}-${
-                        index === props.indexSystem ? 'white' : 'black'
-                      }.svg`}
-                      alt={`${el.name}-icon`}
-                      style={{ width: '100%', height: '100%' }}
-                    />
+                    <img src={`static/icons/_elements/${el.iconAlias}-${colorIcon}.svg`} alt={`${el.name}-icon`} />
                   </div>
                   <span>{el.name}</span>
                 </button>
@@ -54,10 +49,11 @@ export default function BlockElements(props) {
           color: var(--dark-color);
         }
         .elements__container aside {
-          width: 350px;
+          width: 300px;
           display: flex;
           flex-direction: column;
           flex-shrink: 0;
+          padding-right: 20px;
           justify-content: space-between;
         }
         .elements__container article {
@@ -100,13 +96,12 @@ export default function BlockElements(props) {
         .elements__slider {
           margin: 0 auto;
           overflow: hidden;
-          width: 800px;
         }
         .elements__slider div {
           display: flex;
           height: 100%;
-          transform: translateX(${-860 * props.indexSystem}px);
-          transition: .6s ease-out;
+          transform: translateX(calc(-100% * ${props.indexSystem}));
+          transition: 0.6s ease-out;
         }
       `}</style>
     </>

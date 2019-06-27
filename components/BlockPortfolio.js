@@ -37,7 +37,6 @@ export default function BlockPortfolio() {
       alt: '',
     },
   ];
-
   return (
     <>
       <section className="block-porfolio">
@@ -48,10 +47,10 @@ export default function BlockPortfolio() {
           {portfolioArray.map((el, index) => {
             return (
               <a href="#" className="portfolio__item" key={index}>
-                <img src={`/static/img/_portfolio/${el.src}`} alt={el.alt} className="portfolio__item__img"/>  
+                <img src={`/static/img/_portfolio/${el.src}`} alt={el.alt} className="portfolio__item__img" />
                 <div className="portfolio__item__overlay">
-                    <h4>{el.header}</h4>
-                    <span>{el.desc}</span>
+                  <h4>{el.header}</h4>
+                  <span>{el.desc}</span>
                 </div>
               </a>
             );

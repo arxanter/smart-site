@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import fetch from 'isomorphic-unfetch';
 // Components
 import Menu from '../components/mainMenu';
 import MainBaner from '../components/mainBaner';
@@ -13,7 +14,7 @@ import BlockContactForm from '../components/BlockContactForm';
 export default function Index(props) {
   const [indexSystem, changeIndexSystem] = useState(0);
   return (
-    <React.Fragment>
+    <>
       <Menu />
       <main>
         <MainBaner indexSystem={indexSystem} changeIndexSystem={changeIndexSystem} systemsList={props.systemsList} />
@@ -30,7 +31,7 @@ export default function Index(props) {
         <BlockContactForm />
       </main>
       <MainFooter />
-    </React.Fragment>
+    </>
   );
 }
 

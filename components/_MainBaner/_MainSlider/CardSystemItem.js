@@ -13,7 +13,9 @@ export default function CardSystemItem(props) {
             />
           </div>
           <div className="card__button">
-            <button className=" btn-secondary" onClick={props.onChange}>Подробнее</button>
+            <button className=" btn-secondary" onClick={props.onChange}>
+              Подробнее
+            </button>
           </div>
           <div className="card__overlay" />
         </div>
@@ -74,7 +76,6 @@ export default function CardSystemItem(props) {
         }
         .card--active .card__title {
           margin-left: 45px;
-          transition: .4s ease-out;
         }
         .card--active .card__title:before {
           content: '';
@@ -84,7 +85,6 @@ export default function CardSystemItem(props) {
           top: 50%;
           left: -45px;
           background-color: var(--light-color);
-          transition: .2s ease-out;
         }
         .card--active .card__image {
           width: 400px;

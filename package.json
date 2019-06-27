@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "HOST=http://localhost:3000 node server.js",
+    "dev": "HOST=http://localhost:5000 node server.js",
     "dev-next": "next",
     "build": "next build",
-    "start": "NODE_ENV=production HOST=http://localhost:3000 node server.js",
+    "start": "NODE_ENV=production HOST=http://localhost:5000 node server.js",
     "start-pm2": "next build && pm2 start server.js"
   },
   "keywords": [],

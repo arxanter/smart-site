@@ -77,7 +77,6 @@ export default function MainSlider(props) {
         }
         .slider__count {
           width: 80px;
-          font-family: Helvetica;
           transform: rotate(-90deg);
           font-size: 2em;
         }
@@ -92,7 +91,7 @@ export default function MainSlider(props) {
         .slider__count:before {
           content: '';
           position: absolute;
-          bottom: 0;
+          bottom: 10px;
           left: -30px;
           height: 3px;
           width: 25px;

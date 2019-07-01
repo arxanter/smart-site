@@ -81,7 +81,11 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
             <ul>{offersButtons()}</ul>
           </nav>
           <div className="container">
-            <img src={`/static/img/${activeOffer.draftImg}`} alt="" />
+            {activeOffer.draftImg ? (
+              <img src={`/static/img/${activeOffer.draftImg}`} alt="" />
+            ) : (
+              <div style={{ width: '450px' }}></div>
+            )}
             <div className="container__offer">
               <div className="offer__header">
                 <h3>{offer.name}</h3>

@@ -19,7 +19,7 @@ const menuItmes = [
   },
 ];
 
-export default function Menu(props) {
+export default function Menu() {
   const changeMenu = ev => {
     console.log(ev);
   };
@@ -109,10 +109,9 @@ export default function Menu(props) {
             align-items: center;
             margin-right: 15px;
             line-height: 2.4em;
-            font-family: auto;
           }
           .nav__contact__phone:hover {
-            opacity: 0.8
+            opacity: 0.8;
           }
           .nav__contact__phone .phone__icon {
             width: 18px;
@@ -127,8 +126,6 @@ export default function Menu(props) {
             position: relative;
             top: -5px;
           }
-
-
         `}
       </style>
     </>

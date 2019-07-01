@@ -1,27 +1,27 @@
-export default function BlockOffer({offer}) {
+export default function BlockOffer({ offer }) {
   return (
     <>
-    <article>
-      <div className="block-numbers">
-        <div className='block-numbers__item'>
-          <span className="main">{offer.square} кв м</span>
-          <span>площадь</span>
+      <article>
+        <div className="block-numbers">
+          <div className="block-numbers__item">
+            <span className="main">{offer.square} кв м</span>
+            <span>площадь</span>
+          </div>
+          <div className="block-numbers__item">
+            <span className="main">{offer.price} руб</span>
+            <span>стоимость</span>
+          </div>
         </div>
-        <div className='block-numbers__item'>
-          <span className="main">{offer.price} руб</span>
-          <span>стоимость</span>
+        <div className="block-info">
+          <h5>Оборудование</h5>
+          <p>{offer.brands}</p>
+          <h5>Системы</h5>
+          <p>{offer.systems}</p>
+          <h5>Описание</h5>
+          <p>{offer.info}</p>
         </div>
-      </div>
-      <div className="block-info">
-        <h5>Оборудование</h5>
-        <p>{offer.brands}</p>
-        <h5>Системы</h5>
-        <p>{offer.systems}</p>
-        <h5>Описание</h5>
-        <p>{offer.info}</p>
-      </div>
-    </article>
-    <style jsx>{`
+      </article>
+      <style jsx>{`
       span, h5, p {
         color: var(--dark-color);
       }
@@ -43,10 +43,11 @@ export default function BlockOffer({offer}) {
       }
       .block-numbers__item span{
         font-size: 22px;
+        font-weight: 300;
       }
       .block-numbers__item span.main {
         font-size: 32px;
-        font-family: Helvetica;
+        font-weight: 300;
       }
       .block-info {
         padding: 20px 0;
@@ -54,5 +55,5 @@ export default function BlockOffer({offer}) {
 
       `}</style>
     </>
-  )
+  );
 }

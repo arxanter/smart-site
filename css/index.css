@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Museo Cyrlic';
+  src: url('/static/fonts/Museo Cyrl 900.woff') format('woff'), url('/static/fonts/Museo Cyrl 900.ttf') format('opentype');
+}
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap&subset=cyrillic');
 :root {
   --main-color: #ff6f61;
   --main-light-color: rgba(255, 111, 97, 0.45);
@@ -11,7 +16,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Raleway, sans-serif;
+  font-family: 'Open sans', Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1;
   overflow-x: hidden;
@@ -34,9 +39,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Helvetica, sans-serif;
+  font-family: 'Museo Cyrlic', Helvetica, sans-serif;
   font-display: auto;
-  font-weight: 700;
   margin: 0;
   padding: 0;
 }

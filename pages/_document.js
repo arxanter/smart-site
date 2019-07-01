@@ -14,7 +14,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
         <style>{`
           `}</style>
         <body>

@@ -70,12 +70,14 @@ export default function CardSystemItem(props) {
         .card__title {
           position: relative;
           display: inline-block;
-        }
-        .card-active .card__title {
-          padding-left: 25px;
+          font-family: 'Open sans';
+          font-size: 18px;
+          font-width: 600;
         }
         .card--active .card__title {
           margin-left: 45px;
+          padding-left: 10px;
+          color: var(--main-color);
         }
         .card--active .card__title:before {
           content: '';
@@ -84,7 +86,7 @@ export default function CardSystemItem(props) {
           width: 40px;
           top: 50%;
           left: -45px;
-          background-color: var(--light-color);
+          background-color: var(--main-color);
         }
         .card--active .card__image {
           width: 400px;

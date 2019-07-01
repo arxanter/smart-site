@@ -25,7 +25,7 @@ export default function Index(props) {
           systemsData={props.systemsData}
         />
         <BlockPoints />
-        <BlockSolutions />
+        <BlockSolutions offers={props.offers} typeOffers={props.typeOffers} />
         <BlockMarketing />
         <BlockPortfolio />
         <BlockContactForm />
@@ -36,13 +36,15 @@ export default function Index(props) {
 }
 
 Index.getInitialProps = async () => {
-  const baseURL = process ? process.env.HOST : '';
+  let baseURL = process ? process.env.HOST : '';
+  baseURL += '/api/v1/';
   try {
-    const res = await fetch(baseURL + '/api/v1/systemsList');
+    const res = await fetch(baseURL + 'systemsList');
     const systemsList = await res.json();
+
     const systemsData = [];
     for (let item of systemsList) {
-      const res = await fetch(baseURL + `/api/v1/systemArticle/${item.article}`);
+      const res = await fetch(baseURL + `systemArticle/${item.article}`);
       const systemData = await res.text();
       systemsData.push({
         article: systemData,
@@ -50,7 +52,9 @@ Index.getInitialProps = async () => {
         imgGalery: item.imgGalery,
       });
     }
-    return { systemsList, systemsData };
+    const resOffers = await fetch(baseURL + 'offers');
+    const { offers, types: typeOffers } = await resOffers.json();
+    return { systemsList, systemsData, offers, typeOffers };
   } catch (err) {
     console.log(err);
   }

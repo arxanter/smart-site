@@ -3,6 +3,7 @@ const next = require('next');
 const fs = require('fs');
 const { promisify } = require('util');
 const readFile = promisify(fs.readFile);
+const getOffers = require('./data/solutions/index');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -27,6 +28,10 @@ app
       } catch (err) {
         res.status(404).end();
       }
+    });
+    server.get('/api/v1/offers', async (req, res) => {
+      const data = await getOffers();
+      res.send(data);
     });
     /**
      * Base route

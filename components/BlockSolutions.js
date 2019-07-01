@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import BlockOffer from './_BlockSolutions/BlockOffer';
 
-export default function BlockSolutions() {
-  const [activeType, setActiveType] = useState('Частный дом');
-
-  const types = ['Частный дом', 'Квартира', 'Гостиница'];
+export default function BlockSolutions({ typeOffers = [], offers }) {
+  const [activeType, setActiveType] = useState(typeOffers[0].type);
+  const [activeOffer, setActiveOffer] = useState({});
+  const [activeOfferIndex, setActiveOfferIndex] = useState(0);
+  const [filteredOffers, setFilteredOffers] = useState([]);
 
   const offer = {
     name: 'Объект Вадим Дегтярев',
@@ -16,6 +17,51 @@ export default function BlockSolutions() {
     info:
       'Электроснабжение, станция бесперебойного электропитания, освещение с регулируемой яркостью, RGBWW (регулирование цвета и цветовой температуры белого), датчики движения в коридорах, комплексное управление отоплением, теплыми полами и кондиционированием, охранно-пожарная сигнализация, видеонаблюдение периметра дома и участка, автоматика освещения и полива участка, сценарии комплексного управления комнатой, этажем, домом, режимы "комфорт", "ожидание", "энергосбережение", управление системами автоматическое, по таймерам, по движению, ручное. Интерфейс пользователя на iPad, iPhone. Удаленный доступ через интернет.',
   };
+
+  const filterOffers = () => {
+    return offers.filter(el => el.type === activeType);
+  };
+  /** Effects */
+  useEffect(() => {
+    const offers = filterOffers();
+    setFilteredOffers(offers);
+    setActiveOffer(offers[0] || {});
+  }, [activeType]);
+
+  useEffect(() => {
+    const index = filteredOffers.indexOf(activeOffer);
+    if (index !== -1) setActiveOfferIndex(index);
+    else setActiveOfferIndex(0);
+  }, [activeOffer]);
+
+  /** Components */
+  const offersButtons = () => {
+    return typeOffers.map((item, index) => (
+      <li className="nav-item" key={index}>
+        <button
+          className={activeType == item.type ? 'btn-primary' : 'btn-secondary-black'}
+          onClick={() => {
+            setActiveType(item.type);
+          }}
+        >
+          {item.name}
+        </button>
+      </li>
+    ));
+  };
+  /** Functions */
+  const currectCount = value => {
+    return value < 9 ? '0' + value : value;
+  };
+  const buttonLeftIcon = () => {
+    const type = activeOfferIndex > 0 ? 'bold' : 'thin';
+    return `/static/icons/_arrows/arrow-${type}-left-black.svg`;
+  };
+  const buttonRightIcon = () => {
+    const type = activeOfferIndex < filteredOffers.length ? 'bold' : 'thin';
+    return `/static/icons/_arrows/arrow-${type}-right-black.svg`;
+  };
+  /** Render */
   return (
     <>
       <section className="block__solutions">
@@ -24,41 +70,26 @@ export default function BlockSolutions() {
         </h2>
         <div>
           <nav>
-            <ul>
-              {types.map((type, index) => {
-                return (
-                  <li className="nav-item" key={index}>
-                    <button
-                      className={activeType == type ? 'btn-primary' : 'btn-secondary-black'}
-                      onClick={() => {
-                        setActiveType(type);
-                      }}
-                    >
-                      {type}
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
+            <ul>{offersButtons()}</ul>
           </nav>
           <div className="container">
-            <img src="/static/img/_solutions/solution_1.png" alt="" />
+            <img src={`/static/img/${activeOffer.draftImg}`} alt="" />
             <div className="container__offer">
               <div className="offer__header">
                 <h3>{offer.name}</h3>
                 <div className="offer__header__nav">
-                  <button>
-                    <img src="/static/icons/_arrows/arrow-thin-left-black.svg" alt="" />
+                  <button disabled={activeOfferIndex === 0}>
+                    <img src={buttonLeftIcon()} alt="" />
                   </button>
                   <span className="offer__header__counter">
-                    01<mark>/06</mark>
+                    01<mark>/{currectCount(filteredOffers.length)}</mark>
                   </span>
                   <button>
-                    <img src="/static/icons/_arrows/arrow-bold-right-black.svg" alt="" />
+                    <img src={buttonRightIcon()} alt="" />
                   </button>
                 </div>
               </div>
-              <BlockOffer offer={offer} />
+              <BlockOffer offer={activeOffer} />
             </div>
           </div>
         </div>
@@ -73,6 +104,7 @@ export default function BlockSolutions() {
         }
         .container img {
           max-width: 450px;
+          padding: 20px 0;
         }
         nav ul {
           display: flex;

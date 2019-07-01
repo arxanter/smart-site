@@ -61,6 +61,14 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
     const type = activeOfferIndex < filteredOffers.length ? 'bold' : 'thin';
     return `/static/icons/_arrows/arrow-${type}-right-black.svg`;
   };
+  const changeOffer = direction => {
+    if (direction === '+' && activeOfferIndex + 1 < filteredOffers.length) {
+      setActiveOffer(filteredOffers[activeOfferIndex + 1]);
+    }
+    if (direction === '-' && activeOfferIndex > 0) {
+      setActiveOffer(filteredOffers[activeOfferIndex - 1]);
+    }
+  };
   /** Render */
   return (
     <>
@@ -78,13 +86,24 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
               <div className="offer__header">
                 <h3>{offer.name}</h3>
                 <div className="offer__header__nav">
-                  <button disabled={activeOfferIndex === 0}>
+                  <button
+                    disabled={activeOfferIndex === 0}
+                    onClick={() => {
+                      changeOffer('-');
+                    }}
+                  >
                     <img src={buttonLeftIcon()} alt="" />
                   </button>
                   <span className="offer__header__counter">
-                    01<mark>/{currectCount(filteredOffers.length)}</mark>
+                    {currectCount(activeOfferIndex + 1)}
+                    <mark>/{currectCount(filteredOffers.length)}</mark>
                   </span>
-                  <button>
+                  <button
+                    disabled={activeOfferIndex + 1 >= filteredOffers.length}
+                    onClick={() => {
+                      changeOffer('+');
+                    }}
+                  >
                     <img src={buttonRightIcon()} alt="" />
                   </button>
                 </div>

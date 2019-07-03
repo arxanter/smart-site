@@ -4,7 +4,11 @@ export default function CardSystemItem(props) {
     <>
       <div className={`card ${props.isActive ? 'card--active' : ''}`}>
         <div className="card__image">
-          <img src={`/static/img/${props.item.img}`} alt={props.item.name} style={{ width: '100%', height: '100%' }} />
+          <img
+            src={`/static/img/${props.item.img.src}`}
+            alt={props.item.img.alt}
+            style={{ width: '100%', height: '100%' }}
+          />
           <div className="card__icon">
             <img
               src={`${fullIconAlias}${props.isActive ? '-white' : '-black'}.svg`}

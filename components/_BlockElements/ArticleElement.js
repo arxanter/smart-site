@@ -15,7 +15,7 @@ export default function ArticleElement({ article, img, imgGalery }) {
         </section>
         <aside>
           <div className="content__main-image">
-            <img src={`/static/img/${img}`} alt="" />
+            <img src={`/static/img/${img.src}`} alt={img.alt} />
           </div>
           <div className="content__slider">
             <button
@@ -26,7 +26,7 @@ export default function ArticleElement({ article, img, imgGalery }) {
               <img src="/static/icons/_arrows/arrow-bold-left-black.svg" />
             </button>
             <div className="content__slider__image">
-              <img src={`/static/img/${imgGalery[indexSliderImage]}`} alt="" />
+              <img src={`/static/img/${imgGalery[indexSliderImage].src}`} alt={imgGalery[indexSliderImage].alt} />
             </div>
             <button
               onClick={() => {

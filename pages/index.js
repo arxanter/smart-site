@@ -10,6 +10,8 @@ import BlockSolutions from '../components/BlockSolutions';
 import BlockMarketing from '../components/BlockMarketing';
 import BlockPortfolio from '../components/BlockPortfolio';
 import BlockContactForm from '../components/BlockContactForm';
+import { resolve } from 'upath';
+import { rejects } from 'assert';
 
 export default function Index(props) {
   const [indexSystem, changeIndexSystem] = useState(0);
@@ -39,21 +41,29 @@ Index.getInitialProps = async () => {
   let baseURL = process ? process.env.HOST : '';
   baseURL += '/api/v1/';
   try {
-    const res = await fetch(baseURL + 'systemsList');
-    const systemsList = await res.json();
+    const promises = [];
+    promises.push(fetch(baseURL + 'systemsList'));
+    promises.push(fetch(baseURL + 'offers'));
 
+    const [systemsRes, offersRes] = await Promise.all(promises);
+    const systemsList = await systemsRes.json();
+    const { offers, types: typeOffers } = await offersRes.json();
     const systemsData = [];
-    for (let item of systemsList) {
-      const res = await fetch(baseURL + `systemArticle/${item.article}`);
-      const systemData = await res.text();
-      systemsData.push({
-        article: systemData,
-        img: item.img,
-        imgGalery: item.imgGalery,
+    const promiseArticles = systemsList.map(item => {
+      return new Promise(resolve => {
+        fetch(baseURL + `systemArticle/${item.article}`)
+          .then(res => res.text())
+          .then(data => {
+            systemsData.push({
+              article: data,
+              img: item.img,
+              imgGalery: item.imgGalery,
+            });
+            resolve();
+          });
       });
-    }
-    const resOffers = await fetch(baseURL + 'offers');
-    const { offers, types: typeOffers } = await resOffers.json();
+    });
+    await Promise.all(promiseArticles);
     return { systemsList, systemsData, offers, typeOffers };
   } catch (err) {
     console.log(err);

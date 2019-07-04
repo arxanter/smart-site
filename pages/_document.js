@@ -13,13 +13,27 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
-        <style>{`
+        <html lang="ru">
+          <Head>
+            <meta charSet="utf-8" />
+            <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta
+              name="description"
+              content="Проектирование и монтаж систем Автоматизации зданий. Системы Умный дом для квартир, домов и коттеджей."
+            />
+            <meta
+              name="keywords"
+              content="Умный дом, Автоматизация, Климат в доме, Мультирум, Мультимедиа, Система Видеонаблюдения, Охранная сигнализация для частного сектора, Системы безопасности, Сестемы деспетчеризации, Системы мониторинга"
+            />
+          </Head>
+          <style>{`
           `}</style>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
+          <body>
+            <Main />
+            <NextScript />
+          </body>
+        </html>
       </Html>
     );
   }

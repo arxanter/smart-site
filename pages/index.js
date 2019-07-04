@@ -10,8 +10,6 @@ import BlockSolutions from '../components/BlockSolutions';
 import BlockMarketing from '../components/BlockMarketing';
 import BlockPortfolio from '../components/BlockPortfolio';
 import BlockContactForm from '../components/BlockContactForm';
-import { resolve } from 'upath';
-import { rejects } from 'assert';
 
 export default function Index(props) {
   const [indexSystem, changeIndexSystem] = useState(0);

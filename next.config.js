@@ -1,4 +1,7 @@
-const withCSS = require('@zeit/next-css')
+const withCSS = require('@zeit/next-css');
 module.exports = withCSS({
-  /* config options here */
-})
+  webpack: (config, { dev }) => {
+    if (!dev) config.optimization.minimize = true;
+    return config;
+  },
+});

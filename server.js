@@ -1,4 +1,5 @@
 const express = require('express');
+const compression = require('compression');
 const next = require('next');
 const fs = require('fs');
 const { promisify } = require('util');
@@ -13,6 +14,7 @@ app
   .prepare()
   .then(() => {
     const server = express();
+    server.use(compression());
 
     /**
      * Custom routers
@@ -26,7 +28,7 @@ app
         const data = await readFile(`./data/systems/articles/${req.params.fileName}`, 'utf8');
         res.send(data);
       } catch (err) {
-        res.status(404).end();
+        res.status(404).end('Smth wrong');
       }
     });
     server.get('/api/v1/offers', async (req, res) => {
@@ -36,6 +38,13 @@ app
     /**
      * Base route
      */
+    server.get('/robots.txt', async (req, res) => {
+      const data = await readFile('./static/robots.txt', 'utf8');
+      res.send(data);
+    });
+    server.get('/sitemap.xml', async (req, res) => {
+      res.status(404).end();
+    });
     server.get('*', (req, res) => {
       return handle(req, res);
     });

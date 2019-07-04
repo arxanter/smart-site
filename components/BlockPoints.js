@@ -2,22 +2,22 @@ export default function BlockPoints() {
   const points = [
     {
       name: 'Составление ТЗ',
-      text: 'Заказчик описывает требования к закупаемым товарам, работам и услугам',
+      text: 'Составление технического задание исходя из пожеланий клиента',
       icon: 'list.svg',
     },
     {
-      name: 'Закупка оборудования',
-      text: 'Экологичность и экономичность в сочетании с высокими показателями комфорта ',
+      name: 'Проектирование',
+      text: 'Разработка проектной документации и подбор оборудования',
       icon: 'monitor.svg',
     },
     {
       name: 'Монтажные работы',
-      text: 'Доставка к рабочему месту, установка, выверка и закрепление изделий',
+      text: 'Прокладка кабельных трасс и подготовительные работы.',
       icon: 'tools.svg',
     },
     {
       name: 'Пусконаладочные работы',
-      text: 'Комплекс работ, выполняемых в период подготовки и проведения испытаний',
+      text: 'Программирование и отладка систем автоматизации',
       icon: 'gears.svg',
     },
   ];
@@ -32,7 +32,7 @@ export default function BlockPoints() {
             return (
               <li className="point" key={index}>
                 <div className="point__icon">
-                  <img src={`/static/icons/_points/${el.icon}`} style={{width: '100%', height: '100%'}}/>
+                  <img src={`/static/icons/_points/${el.icon}`} style={{ width: '100%', height: '100%' }} />
                 </div>
                 <h3 className="point__name">{el.name}</h3>
                 <span className="point__text">{el.text}</span>
@@ -56,6 +56,7 @@ export default function BlockPoints() {
 
         .point {
           margin: 0 10px;
+          flex: 1 1;
         }
 
         .point__icon {
@@ -63,7 +64,6 @@ export default function BlockPoints() {
           height: 90px;
           margin: auto;
         }
-
       `}</style>
     </>
   );

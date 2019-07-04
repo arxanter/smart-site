@@ -6,15 +6,9 @@
     "es6": true
   },
   "plugins": ["prettier", "react"],
-  "ecmaFeatures": {
-    "modules": true,
-    "spread": true,
-    "restParams": true,
-    "jsx": true
-  },
   "parserOptions": {
     "sourceType": "module",
-    "ecmaVersion": 8
+    "ecmaVersion": 2018,
   },
   "rules": {
     "no-console": "off",
@@ -22,5 +16,10 @@
     "prettier/prettier": ["error"],
     "react/react-in-jsx-scope": "off",
     "react/prop-types": 0
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
   }
 }

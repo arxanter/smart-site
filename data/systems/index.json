@@ -4,7 +4,7 @@
     "iconAlias": "light",
     "article": "light.md",
     "img": {
-      "src": "light.jpg",
+      "src": "_systems/main/light.jpg",
       "alt": "Дизайнские решения освещения"
     },
     "imgGalery": [
@@ -30,7 +30,7 @@
     "name": "Климат",
     "iconAlias": "climate",
     "img": {
-      "src": "climate.jpg",
+      "src": "_systems/main/climate.jpg",
       "alt": "Термостаты и управление климатом"
     },
     "imgGalery": [
@@ -57,7 +57,7 @@
     "name": "Безопасность",
     "iconAlias": "security",
     "img": {
-      "src": "security.jpg",
+      "src": "_systems/main/security.jpg",
       "alt": "Система видеонаблюдения"
     },
 
@@ -85,7 +85,7 @@
     "name": "Мультимедиа",
     "iconAlias": "multimedia",
     "img": {
-      "src": "multimedia.jpg",
+      "src": "_systems/main/multimedia.jpg",
       "alt": "Домашний кинотеатр"
     },
     "imgGalery": [
@@ -112,7 +112,7 @@
     "name": "Мониторинг",
     "iconAlias": "monitoring",
     "img": {
-      "src": "monitoring.jpg",
+      "src": "_systems/main/monitoring.jpg",
       "alt": "Интерфес системы мониторинга"
     },
     "imgGalery": [

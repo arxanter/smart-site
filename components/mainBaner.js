@@ -12,7 +12,7 @@ const MainBaner = props => {
             <p>Монтаж и проектирование систем Автоматизации частных домов и коммерческой недвижимости</p>
             <button className="btn-secondary">Заказать проект</button>
           </section>
-          <MainSlider {...props}/>
+          <MainSlider {...props} />
         </div>
       </div>
       <style jsx>{`

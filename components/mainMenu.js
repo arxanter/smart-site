@@ -42,8 +42,8 @@ export default function Menu() {
             })}
           </ul>
           <div className="nav__contact">
-            <a className="nav__contact__phone" href="tel:+74956450872">
-              <div className="phone__icon">
+            <a className="phone-number" href="tel:+74956450872">
+              <div className="phone-icon">
                 <img src="static/icons/phone-white.svg" />
               </div>
 
@@ -57,7 +57,7 @@ export default function Menu() {
       <style jsx>
         {`
           .nav__wrapper {
-            height: 70px;
+            height: 60px;
             background-color: var(--dark-color);
             padding: 0 10px;
             text-align: center;
@@ -104,16 +104,16 @@ export default function Menu() {
             display: flex;
             align-items: center;
           }
-          .nav__contact__phone {
+          .nav__contact .phone-number {
             display: flex;
             align-items: center;
             margin-right: 15px;
             line-height: 2.4em;
           }
-          .nav__contact__phone:hover {
+          .nav__contact .phone-number:hover {
             opacity: 0.8;
           }
-          .nav__contact__phone .phone__icon {
+          .nav__contact .phone-icon {
             width: 18px;
             height: 18px;
             padding: 3px;
@@ -122,7 +122,7 @@ export default function Menu() {
             border-radius: 50%;
             background-color: var(--main-color);
           }
-          .phone__icon img {
+          .phone-icon img {
             position: relative;
             top: -5px;
           }

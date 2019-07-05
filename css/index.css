@@ -1,7 +1,19 @@
 @font-face {
   font-family: 'Museo Cyrlic';
-  src: url('/static/fonts/Museo Cyrl 900.woff') format('woff'), url('/static/fonts/Museo Cyrl 900.ttf') format('opentype');
+  src: url('/static/fonts/Museo Cyrl 300.woff2') format('woff2'), url('/static/fonts/Museo Cyrl 300.ttf') format('opentype');
+  font-weight: 300;
 }
+@font-face {
+  font-family: 'Museo Cyrlic';
+  src: url('/static/fonts/Museo Cyrl 500.woff2') format('woff2'), url('/static/fonts/Museo Cyrl 500.ttf') format('opentype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Museo Cyrlic';
+  src: url('/static/fonts/Museo Cyrl 900.woff') format('woff'), url('/static/fonts/Museo Cyrl 900.ttf') format('opentype');
+  font-weight: 900;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap&subset=cyrillic');
 :root {
   --main-color: #ff6f61;
@@ -40,7 +52,6 @@ h4,
 h5,
 h6 {
   font-family: 'Museo Cyrlic', Helvetica, sans-serif;
-  font-display: auto;
   margin: 0;
   padding: 0;
 }
@@ -102,7 +113,8 @@ button {
 .btn-secondary-black {
   height: 2.2em;
   font-size: 14px;
-  padding: 0 20px;
+  line-height: 100%;
+  padding: 0 35px;
   border-radius: 28px;
   box-sizing: border-box;
   background-color: var(--main-color);
@@ -132,7 +144,7 @@ button:active {
   opacity: 0.4;
 }
 button:disabled {
-  opacity: 0.2;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 

@@ -22,8 +22,9 @@ export default function ArticleElement({ article, img, imgGalery }) {
               onClick={() => {
                 sliderEvent('-');
               }}
+              aria-label="Навигация влево"
             >
-              <img src="/static/icons/_arrows/arrow-bold-left-black.svg" />
+              <img src="/static/icons/_arrows/arrow-left-black.svg" />
             </button>
             <div className="content__slider__image">
               <img src={`/static/img/${imgGalery[indexSliderImage].src}`} alt={imgGalery[indexSliderImage].alt} />
@@ -32,8 +33,9 @@ export default function ArticleElement({ article, img, imgGalery }) {
               onClick={() => {
                 sliderEvent('+');
               }}
+              aria-label="Навигация вправо"
             >
-              <img src="/static/icons/_arrows/arrow-bold-right-black.svg" />
+              <img src="/static/icons/_arrows/arrow-right-black.svg" />
             </button>
           </div>
         </aside>

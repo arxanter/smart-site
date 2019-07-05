@@ -53,14 +53,6 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
   const currectCount = value => {
     return value < 9 ? '0' + value : value;
   };
-  const buttonLeftIcon = () => {
-    const type = activeOfferIndex > 0 ? 'bold' : 'thin';
-    return `/static/icons/_arrows/arrow-${type}-left-black.svg`;
-  };
-  const buttonRightIcon = () => {
-    const type = activeOfferIndex < filteredOffers.length ? 'bold' : 'thin';
-    return `/static/icons/_arrows/arrow-${type}-right-black.svg`;
-  };
   const changeOffer = direction => {
     if (direction === '+' && activeOfferIndex + 1 < filteredOffers.length) {
       setActiveOffer(filteredOffers[activeOfferIndex + 1]);
@@ -82,7 +74,7 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
           </nav>
           <div className="container">
             {activeOffer.draftImg ? (
-              <img src={`/static/img/${activeOffer.draftImg}`} alt="" />
+              <img src={`/static/img/${activeOffer.draftImg}`} alt="Иконка стрелки влево" />
             ) : (
               <div style={{ width: '450px' }}></div>
             )}
@@ -95,8 +87,9 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
                     onClick={() => {
                       changeOffer('-');
                     }}
+                    aria-label="Навигация влево"
                   >
-                    <img src={buttonLeftIcon()} alt="" />
+                    <img src="/static/icons/_arrows/arrow-left-black.svg" alt="" />
                   </button>
                   <span className="offer__header__counter">
                     {currectCount(activeOfferIndex + 1)}
@@ -107,8 +100,9 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
                     onClick={() => {
                       changeOffer('+');
                     }}
+                    aria-label="Навигация вправо"
                   >
-                    <img src={buttonRightIcon()} alt="" />
+                    <img src="/static/icons/_arrows/arrow-right-black.svg" alt="Иконка стрелки вправо" />
                   </button>
                 </div>
               </div>

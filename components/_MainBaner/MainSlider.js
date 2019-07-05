@@ -5,12 +5,6 @@ export default function MainSlider(props) {
   const [systemsCount] = useState(props.systemsList ? props.systemsList.length : 1);
   const [offsetSlider, setOffsetSlider] = useState(0);
 
-  const leftIconPath = () => {
-    return `/static/icons/_arrows/arrow-${props.indexSystem === 0 ? 'thin' : 'bold'}-left-white.svg`;
-  };
-  const rightIconPath = () => {
-    return `/static/icons/_arrows/arrow-${props.indexSystem === systemsCount ? 'thin' : 'bold'}-right-white.svg`;
-  };
   const eventMove = direction => {
     if (direction === '+' && props.indexSystem + 1 < systemsCount) props.changeIndexSystem(props.indexSystem + 1);
     if (direction === '-' && props.indexSystem - 1 >= 0) props.changeIndexSystem(props.indexSystem - 1);
@@ -31,22 +25,24 @@ export default function MainSlider(props) {
         <section className="slider__content">
           <div className="slider__navigation">
             <span>Элементы умного дома</span>
-            <div className="slider__navigation__controls">
+            <div className="controls">
               <button
                 onClick={() => {
                   eventMove('-');
                 }}
                 disabled={props.indexSystem === 0}
+                aria-label="Навигация влево"
               >
-                <img src={leftIconPath()} />
+                <img src="/static/icons/_arrows/arrow-left-white.svg" />
               </button>
               <button
                 onClick={() => {
                   eventMove('+');
                 }}
                 disabled={props.indexSystem === systemsCount - 1}
+                aria-label="Навигация вправо"
               >
-                <img src={rightIconPath()} />
+                <img src="/static/icons/_arrows/arrow-right-white.svg" />
               </button>
             </div>
           </div>
@@ -129,14 +125,22 @@ export default function MainSlider(props) {
         .slider__navigation {
           display: flex;
           align-items: center;
+          margin-left: 40px;
         }
-        .slider__navigation__controls {
+        .slider__navigation > span {
+          font-family: 'Museo Cyrlic', Helvetica, sans-serif;
+          font-weight: 500;
+          font-size: 24px;
+        }
+        .slider__navigation .controls {
+          height: 26px;
           margin-left: 20px;
+          margin-bottom: 5px;
         }
-        .slider__navigation__controls button {
+        .slider__navigation .controls button {
           width: 32px;
         }
-        .slider__navigation__controls button + button {
+        .slider__navigation .controls button + button {
           margin-left: 10px;
         }
         .slider__body {

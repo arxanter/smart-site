@@ -7,17 +7,6 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
   const [activeOfferIndex, setActiveOfferIndex] = useState(0);
   const [filteredOffers, setFilteredOffers] = useState([]);
 
-  const offer = {
-    name: 'Объект Вадим Дегтярев',
-    square: 180,
-    price: '1 460 000',
-    brands: 'KNX,Satel, Xxter, MDT, K-bus, RVi',
-    systems:
-      'Освещение, климат-контроль, шторы, датчики протечек, охранно-пожарная сигнализация, видеонаблюдение, ИБП, электроснабжение, освещение участка, управление поливом',
-    info:
-      'Электроснабжение, станция бесперебойного электропитания, освещение с регулируемой яркостью, RGBWW (регулирование цвета и цветовой температуры белого), датчики движения в коридорах, комплексное управление отоплением, теплыми полами и кондиционированием, охранно-пожарная сигнализация, видеонаблюдение периметра дома и участка, автоматика освещения и полива участка, сценарии комплексного управления комнатой, этажем, домом, режимы "комфорт", "ожидание", "энергосбережение", управление системами автоматическое, по таймерам, по движению, ручное. Интерфейс пользователя на iPad, iPhone. Удаленный доступ через интернет.',
-  };
-
   const filterOffers = () => {
     return offers.filter(el => el.type === activeType);
   };
@@ -80,7 +69,7 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
             )}
             <div className="container__offer">
               <div className="offer__header">
-                <h3>{offer.name}</h3>
+                <h3>{activeOffer.name}</h3>
                 <div className="offer__header__nav">
                   <button
                     disabled={activeOfferIndex === 0}

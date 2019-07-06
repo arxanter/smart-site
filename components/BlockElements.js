@@ -65,17 +65,19 @@ export default function BlockElements(props) {
           display: flex;
           align-items: center;
           margin: 10px;
-          padding: 10px;
+          padding: 7px;
           border-radius: 40px;
+          transition: background-color 0.5s linear;
         }
         .elements__item__icon {
-          width: 32px;
-          height: 32px;
+          width: 28px;
+          height: 28px;
           padding: 10px;
           overflow: visiable;
           border-radius: 50%;
           box-shadow: 0 2px 10px 0 var(--dark-color);
           margin-right: 20px;
+          transition: box-shadow 1s linear;
         }
         .elements__item:hover {
           box-shadow: 0 3px 8px 0 var(--main-color);
@@ -86,9 +88,11 @@ export default function BlockElements(props) {
         }
         .elements__item--active {
           background-color: var(--main-color);
-
           box-shadow: 0 2px 18px 0 var(--main-color);
           color: var(--light-color);
+        }
+        .elements__item--active span {
+          margin-left: -10px;
         }
         .elements__item--active .elements__item__icon {
           box-shadow: none;

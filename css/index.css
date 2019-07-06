@@ -1,15 +1,18 @@
 @font-face {
   font-family: 'Museo Cyrlic';
+  font-display: auto;
   src: url('/static/fonts/Museo Cyrl 300.woff2') format('woff2'), url('/static/fonts/Museo Cyrl 300.ttf') format('opentype');
   font-weight: 300;
 }
 @font-face {
   font-family: 'Museo Cyrlic';
+  font-display: auto;
   src: url('/static/fonts/Museo Cyrl 500.woff2') format('woff2'), url('/static/fonts/Museo Cyrl 500.ttf') format('opentype');
   font-weight: 500;
 }
 @font-face {
   font-family: 'Museo Cyrlic';
+  font-display: auto;
   src: url('/static/fonts/Museo Cyrl 900.woff') format('woff'), url('/static/fonts/Museo Cyrl 900.ttf') format('opentype');
   font-weight: 900;
 }
@@ -153,7 +156,9 @@ button:disabled {
   margin: 10px;
   background: linear-gradient(180deg, transparent 50%, var(--main-color) 0);
 }
-
+.md-section h3 {
+  padding: 0;
+}
 .md-section p {
   margin-top: 10px;
 }

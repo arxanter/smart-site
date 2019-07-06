@@ -53,11 +53,11 @@ export default function ArticleElement({ article, img, imgGalery }) {
         .content {
           width: 50%;
           max-width: 400px;
-          height: calc(100% - 60px);
-          padding: 20px;
+          height: calc(100% - 40px);
+          padding: 10px 30px;
           margin-top: 0.5em;
           line-height: 1.5;
-          overflow-y: scroll;
+          overflow-y: auto;
           flex-shrink: 0;
           background-color: var(--light-vis-color);
         }

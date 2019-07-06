@@ -46,17 +46,20 @@ Index.getInitialProps = async () => {
     const [systemsRes, offersRes] = await Promise.all(promises);
     const systemsList = await systemsRes.json();
     const { offers, types: typeOffers } = await offersRes.json();
-    const systemsData = [];
+    const systemsData = systemsList.map(item => {
+      return {
+        name: item.name,
+        img: item.img,
+        imgGalery: item.imgGalery,
+      };
+    });
     const promiseArticles = systemsList.map(item => {
       return new Promise(resolve => {
         fetch(baseURL + `systemArticle/${item.article}`)
           .then(res => res.text())
           .then(data => {
-            systemsData.push({
-              article: data,
-              img: item.img,
-              imgGalery: item.imgGalery,
-            });
+            const findedElement = systemsData.find(el => el.name === item.name);
+            if (findedElement) findedElement.article = data;
             resolve();
           });
       });

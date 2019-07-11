@@ -1,23 +1,26 @@
 @font-face {
   font-family: 'Museo Cyrlic';
   font-display: auto;
-  src: url('/static/fonts/Museo Cyrl 300.woff2') format('woff2'), url('/static/fonts/Museo Cyrl 300.ttf') format('opentype');
+  src: url('/static/fonts/Museo Cyrl 300.woff2') format('woff2'),
+    url('/static/fonts/Museo Cyrl 300.ttf') format('opentype');
   font-weight: 300;
 }
 @font-face {
   font-family: 'Museo Cyrlic';
   font-display: auto;
-  src: url('/static/fonts/Museo Cyrl 500.woff2') format('woff2'), url('/static/fonts/Museo Cyrl 500.ttf') format('opentype');
+  src: url('/static/fonts/Museo Cyrl 500.woff2') format('woff2'),
+    url('/static/fonts/Museo Cyrl 500.ttf') format('opentype');
   font-weight: 500;
 }
 @font-face {
   font-family: 'Museo Cyrlic';
   font-display: auto;
-  src: url('/static/fonts/Museo Cyrl 900.woff') format('woff'), url('/static/fonts/Museo Cyrl 900.ttf') format('opentype');
+  src: url('/static/fonts/Museo Cyrl 900.woff') format('woff'),
+    url('/static/fonts/Museo Cyrl 900.ttf') format('opentype');
   font-weight: 900;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap&subset=cyrillic');
 :root {
   --main-color: #ff6f61;
   --main-light-color: rgba(255, 111, 97, 0.45);
@@ -27,6 +30,7 @@
   --dark-vis-color: rgba(38, 35, 32, 0.45);
   --dark-semi-vis-color: rgba(38, 35, 32, 0.8);
   --gray-color: #dcdcdc;
+  --gray-vis-color: rgba(220, 220, 220, 0.45);
 }
 body {
   margin: 0;
@@ -40,7 +44,7 @@ body {
 a {
   background-color: transparent;
   text-decoration: none;
-  color: inherit;
+  color: var(--main-color);
 }
 
 span,
@@ -138,11 +142,13 @@ button {
   color: var(--dark-color);
 }
 
+a:hover,
 button:hover {
   opacity: 0.8;
   transition: 0.2s linear;
 }
 
+a:active,
 button:active {
   opacity: 0.4;
 }
@@ -180,4 +186,48 @@ button:disabled {
   border-radius: 7px;
   border: solid 4px var(--main-color);
   background-color: var(--light-color);
+}
+@media (max-width: 1000px) {
+  h2 {
+    padding: 30px 0;
+  }
+}
+@media (max-width: 650px) {
+  h1 {
+    font-size: 32px;
+    padding: 20px 0;
+  }
+
+  h2 {
+    font-size: 28px;
+    padding: 20px 0;
+  }
+
+  h3 {
+    font-size: 18px;
+    padding: 10px 0;
+  }
+
+  h4 {
+    font-size: 16px;
+    padding: 5px 0;
+  }
+
+  h5 {
+    font-size: 16px;
+    padding: 5px 0;
+  }
+  ul,
+  li,
+  button,
+  a {
+    font-size: 14px;
+  }
+  .btn-primary,
+  .btn-secondary,
+  .btn-secondary-black {
+    font-size: 12px;
+    padding: 0 15px;
+    border-radius: 26px;
+  }
 }

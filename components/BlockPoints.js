@@ -2,7 +2,7 @@ export default function BlockPoints() {
   const points = [
     {
       name: 'Составление ТЗ',
-      text: 'Составление технического задание исходя из пожеланий клиента',
+      text: 'Составление технического задания исходя из пожеланий клиента',
       icon: 'list.svg',
     },
     {
@@ -12,7 +12,7 @@ export default function BlockPoints() {
     },
     {
       name: 'Монтажные работы',
-      text: 'Прокладка кабельных трасс и подготовительные работы.',
+      text: 'Монтаж оборудования и прокладка кабельных трасс',
       icon: 'tools.svg',
     },
     {
@@ -49,13 +49,12 @@ export default function BlockPoints() {
         .container-points {
           width: 100%;
           display: flex;
-          flex-direaction: column;
           text-align: center;
           padding: 40px 0;
         }
 
         .point {
-          margin: 0 10px;
+          margin: 0 5px;
           flex: 1 1;
         }
 
@@ -63,6 +62,39 @@ export default function BlockPoints() {
           width: 90px;
           height: 90px;
           margin: auto;
+        }
+        .point__text {
+          display: inline-block;
+          max-width: 300px;
+        }
+        .point__name {
+          height: 2.2em;
+        }
+        @media (max-width: 1000px) {
+          .point__name {
+            font-size: 18px;
+          }
+          .point__text {
+            font-size: 14px;
+          }
+          .container-points {
+            padding: 10px 0;
+          }
+        }
+        @media (max-width: 650px) {
+          .container-points {
+            flex-direction: column;
+          }
+          .point__name {
+            height: auto;
+            padding: 5px 0;
+          }
+          .point__text {
+            margin-bottom: 20px;
+          }
+          .container-points {
+            padding: 0;
+          }
         }
       `}</style>
     </>

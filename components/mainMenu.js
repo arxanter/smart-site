@@ -1,5 +1,6 @@
+import { slide as Menu } from 'react-burger-menu';
 import Link from 'next/link';
-
+import '../css/burgerMenu.css';
 const menuItmes = [
   {
     name: 'Главная',
@@ -19,16 +20,16 @@ const menuItmes = [
   },
 ];
 
-export default function Menu() {
+export default function MenuComponent() {
   const changeMenu = ev => {
     console.log(ev);
   };
   return (
     <>
-      <div className="nav__wrapper">
-        <nav className="nav__content">
+      <div className="nav-wrapper">
+        <nav className="nav">
           <div className="nav__logo">
-            <h1>LOGO</h1>
+            <h3>LOGO</h3>
           </div>
           <ul className="nav__list">
             {menuItmes.map((el, index) => {
@@ -46,57 +47,79 @@ export default function Menu() {
               <div className="phone-icon">
                 <img src="static/icons/phone-white.svg" />
               </div>
-
               <span>+ 7 (495) 645 08 72</span>
             </a>
-            <button className="nav__contact__btn btn-primary">Заказать звонок</button>
+            <button className="btn-primary">Заказать звонок</button>
+          </div>
+          <div className="burger-menu">
+            <Menu bodyClassName={'nav'} width={'200px'} right>
+              <ul>
+                {menuItmes.map((el, index) => {
+                  return (
+                    <Link href={el.link} key={index}>
+                      <li className={el.name === 'Главная' ? 'active' : ''} onClick={changeMenu}>
+                        {el.name}
+                      </li>
+                    </Link>
+                  );
+                })}
+              </ul>
+            </Menu>
           </div>
         </nav>
       </div>
-
       <style jsx>
         {`
-          .nav__wrapper {
+          @keyframes slidein {
+            from {
+              width: 0;
+            }
+
+            to {
+              width: 100%;
+            }
+          }
+          .nav-wrapper {
             height: 60px;
             background-color: var(--dark-color);
             padding: 0 10px;
             text-align: center;
           }
-          nav {
+          .nav {
             display: flex;
             justify-content: space-between;
             max-width: 1600px;
             height: 100%;
             margin: auto;
           }
-          .nav__content {
-            display: flex;
-            justify-content: space-between;
-          }
-          .nav__content ul {
+          .nav__list {
             display: flex;
             list-style: none;
             align-items: center;
             height: 100%;
           }
-          .nav__content li {
+          nav li {
             cursor: pointer;
             padding: 2px;
+            position: relative;
           }
-          .nav__content li:hover {
-            color: var(--main-color);
-            text-shadow: #262320 0 0 2px;
-            transition: color 0.5s linear;
+          nav li:hover:before {
+            content: '';
+            position: absolute;
+            border-bottom: 2px solid var(--main-color);
+            bottom: 0;
+            left: 0;
+            animation-duration: 1.5s;
+            animation-name: slidein;
           }
-
-          .nav__content li.active {
+          nav li.active {
             background: linear-gradient(180deg, transparent 50%, var(--main-color) 0);
           }
-          .nav__content li + li {
+          .nav__list li + li {
             margin-left: 15px;
           }
           .nav__logo {
-            width: 200px;
+            width: 120px;
             height: 100%;
             background-color: var(--main-color);
           }
@@ -106,6 +129,7 @@ export default function Menu() {
           }
           .nav__contact .phone-number {
             display: flex;
+            color: var(--light-color);
             align-items: center;
             margin-right: 15px;
             line-height: 2.4em;
@@ -124,7 +148,28 @@ export default function Menu() {
           }
           .phone-icon img {
             position: relative;
-            top: -5px;
+            top: -6px;
+          }
+          .burger-menu {
+            display: none;
+          }
+          @media (max-width: 1000px) {
+            .nav__contact button {
+              display: none;
+            }
+            .nav li,
+            .nav__contact span {
+              font-size: 12px;
+            }
+          }
+          @media (max-width: 650px) {
+            .nav__list,
+            .nav__contact {
+              display: none !important;
+            }
+            .burger-menu {
+              display: block;
+            }
           }
         `}
       </style>

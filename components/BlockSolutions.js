@@ -23,21 +23,6 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
     else setActiveOfferIndex(0);
   }, [activeOffer]);
 
-  /** Components */
-  const offersButtons = () => {
-    return typeOffers.map((item, index) => (
-      <li className="nav-item" key={index}>
-        <button
-          className={activeType == item.type ? 'btn-primary' : 'btn-secondary-black'}
-          onClick={() => {
-            setActiveType(item.type);
-          }}
-        >
-          {item.name}
-        </button>
-      </li>
-    ));
-  };
   /** Functions */
   const currectCount = value => {
     return value < 9 ? '0' + value : value;
@@ -54,18 +39,36 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
   return (
     <>
       <section className="block__solutions">
-        <h2>
-          Проекты<mark className="mark-underline">решений</mark>
-        </h2>
+        <div className="header">
+          <h2>
+            Проекты<mark className="mark-underline">решений</mark>
+          </h2>
+          <a className="link-offers" href="">
+            Все решения
+          </a>
+        </div>
         <div>
           <nav>
-            <ul>{offersButtons()}</ul>
+            <ul>
+              {typeOffers.map((item, index) => (
+                <li className="nav-item" key={index}>
+                  <button
+                    className={activeType == item.type ? 'btn-primary' : 'btn-secondary-black'}
+                    onClick={() => {
+                      setActiveType(item.type);
+                    }}
+                  >
+                    {item.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
           </nav>
           <div className="container">
             {activeOffer.draftImg ? (
-              <img src={`/static/img/${activeOffer.draftImg}`} alt="Иконка стрелки влево" />
+              <img src={`/static/img/${activeOffer.draftImg}`} className="img-offer" alt="" />
             ) : (
-              <div style={{ width: '450px' }}></div>
+              <div style={{ maxWidth: '450px' }}></div>
             )}
             <div className="container__offer">
               <div className="offer__header">
@@ -78,7 +81,7 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
                     }}
                     aria-label="Навигация влево"
                   >
-                    <img src="/static/icons/_arrows/arrow-left-black.svg" alt="" />
+                    <img src="/static/icons/_arrows/arrow-left-black.svg" alt="Иконка стрелки влево" />
                   </button>
                   <span className="offer__header__counter">
                     {currectCount(activeOfferIndex + 1)}
@@ -101,21 +104,37 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
         </div>
       </section>
       <style jsx>{`
+        .block__solutions {
+          max-width: 1600px;
+          margin: auto;
+        }
+        .block__solutions .header {
+          position: relative;
+          max-width: 1200px;
+          margin: auto;
+        }
+
+        .header .link-offers {
+          position: absolute;
+          top: 50px;
+          right: 20px;
+          font-weight: 700;
+        }
         .container {
           display: flex;
-          max-width: 1600px;
           margin: auto;
           padding: 20px;
           justify-content: space-around;
         }
-        .container img {
+        .container .img-offer {
           max-width: 450px;
+          width: 30%;
           padding: 20px 0;
         }
         nav ul {
           display: flex;
-          max-width: 800px;
-          padding: 0 20px;
+          max-width: 750px;
+          padding: 0 10px;
           justify-content: space-between;
           margin: auto;
           color: black;
@@ -125,7 +144,6 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
         }
         .offer__header {
           display: flex;
-          max-width: 500px;
           justify-content: space-between;
         }
         .offer__header h3,
@@ -140,16 +158,31 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
           width: 28px;
         }
         .offer__header__counter {
-          font-size: 24px;
-          padding: 0 5px;
+          font-size: 20px;
+          padding: 0 10px;
+          padding-bottom: 5px;
         }
         .offer__header__counter mark {
           background-color: transparent;
-          font-size: 16px;
+          font-size: 14px;
         }
 
         .nav-item button {
           width: 180px;
+        }
+        @media (max-width: 1000px) {
+          .nav-item button {
+            width: 180px;
+          }
+        }
+        @media (max-width: 650px) {
+          .nav-item button {
+            width: 110px;
+            font-size: 12px;
+          }
+          .link-offers {
+            display: none;
+          }
         }
       `}</style>
     </>

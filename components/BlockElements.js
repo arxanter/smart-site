@@ -42,18 +42,17 @@ export default function BlockElements(props) {
         }
         .elements__container {
           display: flex;
-          padding: 60px;
+          padding: 60px 10px;
           margin: auto;
           max-width: 1200px;
           height: 600px;
           color: var(--dark-color);
         }
         .elements__container aside {
-          width: 300px;
+          width: 220px;
           display: flex;
           flex-direction: column;
           flex-shrink: 0;
-          padding-right: 20px;
           justify-content: space-between;
         }
         .elements__container article {

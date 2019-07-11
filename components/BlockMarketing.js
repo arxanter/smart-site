@@ -5,7 +5,7 @@ export default function BlockMarketing() {
         <div className="block-marketing__offer">
           <img className="block-marketing__img" src="/static/img/alisa.png" alt="" />
           <div className="block-marketing__desc">
-            <span>При заказе до 20 июля</span>
+            <span>при заказе до 20 июля</span>
             <h3>Голосовое управление в подарок</h3>
             <button className="btn-secondary">Еще предложения</button>
           </div>
@@ -13,32 +13,49 @@ export default function BlockMarketing() {
       </section>
       <style jsx>{`
         .block-marketing {
-          background-image: url('/static/img/marketing.png');
+          background-image: url('/static/img/bg-marketing.png');
           background-size: cover;
         }
         .block-marketing__offer {
-          max-width: 1200px;
-          margin: auto;
-          height: 350px;
           display: flex;
-          padding: 20px;
+          justify-content: space-between;
           align-items: center;
+          max-width: 800px;
+          margin: auto;
+          padding: 20px;
         }
         .block-marketing__img {
-          width: 250px;
-          height: 250px;
+          width: 200px;
+          object-fit: contain;
           flex-shrink: 0;
-          object-fit: cover;
         }
         .block-marketing__desc {
           padding-left: 60px;
           text-align: left;
         }
         .block-marketing__desc span {
+          font-size: 24px;
+          font-weight: 500;
           color: var(--main-color);
         }
         .block-marketing__desc h3 {
-          font-size: 28px;
+          font-size: 36px;
+          line-height: 1.2em;
+          max-width: 420px;
+        }
+        @media (max-width: 650px) {
+          .block-marketing__desc span {
+            font-size: 18px;
+          }
+          .block-marketing__desc h3 {
+            font-size: 18px;
+          }
+          .block-marketing__desc {
+            padding-left: 20px;
+          }
+          .block-marketing__img {
+            width: 30%;
+          }
         }
       `}</style>
     </>

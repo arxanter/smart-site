@@ -32,12 +32,13 @@ export default function BlockOffer({ offer }) {
         display: flex;
         margin-top: 20px;
         height: 80px;
-        background-color: var(--gray-color);
+        background-color: var(--gray-vis-color);
         justify-content: space-around;
       }
       .block-numbers__item {
         display: flex;
         flex-direction: column;
+        align-items: center;
         position: relative;
         top: -25px;
       }
@@ -51,6 +52,12 @@ export default function BlockOffer({ offer }) {
       }
       .block-info {
         padding: 20px 0;
+      }
+      @media (max-width: 1000px) {
+        
+      }
+      @media (max-width: 650px) {
+
       }
 
       `}</style>

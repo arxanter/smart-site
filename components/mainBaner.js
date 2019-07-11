@@ -9,9 +9,7 @@ const MainBaner = props => {
             <h1>
               Системы <mark>Умного дома</mark>
             </h1>
-            <p>
-              Монтаж и проектирование систем Автоматизации <br /> частных домов и коммерческой недвижимости
-            </p>
+            <p>Монтаж и проектирование систем Автоматизации частных домов и коммерческой недвижимости</p>
             <button className="btn-secondary">Заказать проект</button>
           </section>
           <MainSlider {...props} />
@@ -61,11 +59,21 @@ const MainBaner = props => {
         }
         .main-banner__content p {
           font-size: 18px;
-          margin: 20px;
+          margin: auto;
+          margin-top: 20px;
+          max-width: 480px;
         }
         .main-banner__content button {
           position: relative;
           bottom: -5em;
+        }
+        @media (max-width: 650px) {
+          .main-banner__content p {
+            font-size: 14px;
+          }
+          .main-banner__content button {
+            bottom: -2em;
+          }
         }
       `}</style>
     </>

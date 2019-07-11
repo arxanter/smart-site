@@ -35,20 +35,20 @@ export default function BlockContactForm() {
           <form className="contact-form" name="contact-form">
             <div className="container">
               <label>
-                <span>Ваше имя:</span>
+                <span>Ваше имя</span>
                 <input type="text" />
               </label>
               <label>
-                <span>Телефон:</span>
+                <span>Телефон</span>
                 <input type="phone" />
               </label>
               <label>
-                <span>Электронный адрес:</span>
+                <span>Электронный адрес</span>
                 <input type="text" />
               </label>
             </div>
             <label>
-              <span>Сообщение:</span>
+              <span>Сообщение</span>
               <textarea type="text" />
             </label>
           </form>
@@ -74,11 +74,11 @@ export default function BlockContactForm() {
         }
         .contact__info {
           background-color: var(--dark-semi-vis-color);
-          padding: 10px 0;
+          padding: 20px 0;
         }
         .contact__info ul {
           display: flex;
-          max-width: 1000px;
+          max-width: 800px;
           padding: 0 10px;
           margin: auto;
           justify-content: space-between;
@@ -129,19 +129,19 @@ export default function BlockContactForm() {
           height: 25px;
         }
         .contact-form textarea {
-          width: 100%;
           height: 100%;
           resize: none;
         }
         .contact-form label {
           display: flex;
           flex-direction: column;
-          margin: 10px 5px;
+          margin: 15px 5px;
           text-align: left;
         }
         .contact-form label span {
           font-size: 14px;
-          margin-bottom: 2px;
+          margin-bottom: 5px;
+          margin-left: 5px;
         }
         .contact-form > * {
           width: 50%;
@@ -152,6 +152,30 @@ export default function BlockContactForm() {
         }
         .contact-form__action button {
           padding: 0 30px;
+        }
+        @media (max-width: 1000px) {
+          .contact__info__item span {
+            font-size: 14px;
+          }
+          .contact__info__icon {
+            width: 18px;
+            height: 18px;
+          }
+          .contact-form .container {
+            padding-right: 10px;
+          }
+        }
+        @media (max-width: 650px) {
+          .contact__info ul {
+            flex-direction: column;
+          }
+          .contact__info li {
+            margin-top: 5px;
+          }
+          .contact__info__icon {
+            width: 14px;
+            height: 14px;
+          }
         }
       `}</style>
     </>

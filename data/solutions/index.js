@@ -27,10 +27,12 @@ const getOffers = async () => {
   for (let item of types) {
     const files = await readdir(path.join(__dirname, item.type));
     files.forEach(file => {
-      const offer = require(path.join(__dirname, `/${item.type}/${file}`));
-      offer.type = item.type;
-      offer.uid = getUID();
-      offers.push(offer);
+      if (/^.+\.js/.test(file)) {
+        const offer = require(path.join(__dirname, `/${item.type}/${file}`));
+        offer.type = item.type;
+        offer.uid = getUID();
+        offers.push(offer);
+      }
     });
   }
   return { offers, types };

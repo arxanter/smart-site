@@ -72,30 +72,44 @@ export default function BlockPortfolio() {
           max-width: 30%;
           flex-shrink: 2;
           height: 280px;
-          margin: 20px;
+          margin: 10px;
           overflow: hidden;
+          color: var(--light-color);
+        }
+        a.portfolio__item:hover,
+        a.portfolio__item:active {
+          opacity: 1;
         }
         .portfolio__item__img {
           object-fit: cover;
         }
         .portfolio__item__overlay {
           position: absolute;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
           visibility: hidden;
           top: 0;
           left: 0;
           bottom: 0;
           right: 0;
-          padding-top: 30%;
-          background-color: var(--dark-vis-color);
+          background-color: var(--dark-semi-vis-color);
           text-align: center;
         }
         .portfolio__item:hover {
-          box-shadow: -4px 4px 0 5px var(--main-color);
+          box-shadow: -6px 6px 0 0px var(--main-color);
           transform: translate(7px, -7px);
-          transition: linear 0.4s;
+          transition: linear 0.2s;
         }
         .portfolio__item:hover .portfolio__item__overlay {
           visibility: visible;
+        }
+        @media (max-width: 650px) {
+          .portfolio__item {
+            min-width: calc(50% - 20px);
+            height: 140px;
+            margin: 10px;
+          }
         }
       `}</style>
     </>

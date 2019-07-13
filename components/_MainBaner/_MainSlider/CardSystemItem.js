@@ -7,13 +7,13 @@ export default function CardSystemItem(props) {
           <img
             src={`/static/img/${props.item.img.src}`}
             alt={props.item.img.alt}
-            style={{ width: '100%', height: '100%' }}
+            style={{ width: '100%', objectFit: 'cover' }}
           />
           <div className="card__icon">
             <img
               src={`${fullIconAlias}${props.isActive ? '-white' : '-black'}.svg`}
               alt={`${props.item.name} иконка`}
-              style={{ width: '100%', height: '100%' }}
+              style={{ width: '100%', objectFit: 'cover' }}
             />
           </div>
           <div className="card__button">
@@ -27,12 +27,10 @@ export default function CardSystemItem(props) {
       </div>
       <style jsx>{`
         .card {
-          margin-left: 40px;
           transition: 0.5s linear;
         }
         .card__image {
-          width: 320px;
-          height: 200px;
+          margin: 20px;
           position: relative;
           display: flex;
           flex-direction: column;
@@ -57,8 +55,8 @@ export default function CardSystemItem(props) {
         }
         .card__button {
           display: none;
-          position: relative;
-          bottom: 50%;
+          position: absolute;
+          top: 50%;
           z-index: 999;
         }
         .card__overlay {
@@ -76,11 +74,14 @@ export default function CardSystemItem(props) {
           display: inline-block;
           font-family: 'Open sans';
           font-size: 18px;
-          font-width: 600;
+          font-weight: 700;
+          padding: 0;
+          left: 20px;
         }
         .card--active .card__title {
           margin-left: 45px;
-          padding-left: 10px;
+          padding-left: 5px;
+          padding-top: 10px;
           color: var(--main-color);
         }
         .card--active .card__title:before {
@@ -88,13 +89,12 @@ export default function CardSystemItem(props) {
           position: absolute;
           height: 1px;
           width: 40px;
-          top: 50%;
+          top: calc(50% + 5px);
           left: -45px;
           background-color: var(--main-color);
         }
         .card--active .card__image {
-          width: 400px;
-          height: 265px;
+          transform: scale(1.1);
           border: 4px solid var(--main-color);
         }
         .card--active .card__icon {

@@ -1,17 +1,48 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import Slider from 'react-slick';
 import CardSystemItem from './_MainSlider/CardSystemItem';
 
 export default function MainSlider(props) {
   const [systemsCount] = useState(props.systemsList ? props.systemsList.length : 1);
-  const [offsetSlider, setOffsetSlider] = useState(0);
-
-  const eventMove = direction => {
-    if (direction === '+' && props.indexSystem + 1 < systemsCount) props.changeIndexSystem(props.indexSystem + 1);
-    if (direction === '-' && props.indexSystem - 1 >= 0) props.changeIndexSystem(props.indexSystem - 1);
+  const [sliderRef, setSliderRef] = useState(null);
+  const sliderSettings = {
+    arrow: false,
+    dots: false,
+    infinity: true,
+    autoplay: true,
+    lazyLoad: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    speed: 500,
+    autoplaySpeed: 5000,
+    beforeChange: (oldIndex, newIndex) => {
+      console.log(newIndex);
+    },
+    responsive: [
+      {
+        breakpoint: 1600,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 1100,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
-  useEffect(() => {
-    setOffsetSlider(-360 * props.indexSystem);
-  });
+  const eventMove = direction => {
+    if (direction === '+') sliderRef.slickNext();
+    if (direction === '-') sliderRef.slickPrev();
+  };
   return (
     <>
       <section className="slider">
@@ -30,7 +61,6 @@ export default function MainSlider(props) {
                 onClick={() => {
                   eventMove('-');
                 }}
-                disabled={props.indexSystem === 0}
                 aria-label="Навигация влево"
               >
                 <img src="/static/icons/_arrows/arrow-left-white.svg" />
@@ -39,7 +69,6 @@ export default function MainSlider(props) {
                 onClick={() => {
                   eventMove('+');
                 }}
-                disabled={props.indexSystem === systemsCount - 1}
                 aria-label="Навигация вправо"
               >
                 <img src="/static/icons/_arrows/arrow-right-white.svg" />
@@ -47,23 +76,27 @@ export default function MainSlider(props) {
             </div>
           </div>
           <div className="slider__body">
-            {props.systemsList.map((el, index) => (
-              <CardSystemItem
-                item={el}
-                isActive={index === props.indexSystem}
-                key={index}
-                onChange={() => {
-                  props.changeIndexSystem(index);
-                }}
-              />
-            ))}
+            <Slider {...sliderSettings} ref={c => setSliderRef(c)}>
+              {props.systemsList.map((el, index) => (
+                <CardSystemItem item={el} isActive={index === props.indexSystem} key={index} />
+              ))}
+            </Slider>
           </div>
         </section>
       </section>
       <style jsx>{`
+        @keyframes load {
+          from {
+            height: 0;
+          }
+
+          to {
+            height: 100%;
+          }
+        }
         .slider {
           display: flex;
-          margin-left: 30px;
+          margin-left: 20px;
         }
         .slider__sidebar {
           display: flex;
@@ -72,6 +105,8 @@ export default function MainSlider(props) {
           align-items: center;
         }
         .slider__count {
+          position: relative;
+          top: -20px;
           width: 80px;
           transform: rotate(-90deg);
           font-size: 2em;
@@ -96,9 +131,9 @@ export default function MainSlider(props) {
         .slider__indicator {
           position: relative;
           left: 1.1em;
-          height: 240px;
+          top: 75px;
+          height: 280px;
           width: 3px;
-          margin-top: 110px;
           margin-right: 0.4em;
           background-color: rgba(255, 255, 255, 0.45);
         }
@@ -107,25 +142,25 @@ export default function MainSlider(props) {
           position: absolute;
           bottom: 0;
           left: -1.5px;
-          height: calc(240px * ${props.indexSystem + 1} / ${systemsCount});
           width: 6px;
           background-color: var(--main-color);
           opacity: 0.8;
           box-shadow: 0 2px 8px 0 var(--main-color);
-          transition: 0.5s linear;
+          animation-name: load;
+          animation-duration: 5s;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
         }
         .slider__content {
           height: 100%;
-          width: 100%;
           overflow: hidden;
-          margin-left: 60px;
+          margin-left: 40px;
           padding-top: 60px;
           position: relative;
         }
         .slider__navigation {
           display: flex;
           align-items: center;
-          margin-left: 40px;
         }
         .slider__navigation > span {
           font-family: 'Museo Cyrlic', Helvetica, sans-serif;
@@ -144,12 +179,7 @@ export default function MainSlider(props) {
           margin-left: 10px;
         }
         .slider__body {
-          display: flex;
-          position: relative;
-          align-items: center;
-          margin-top: 20px;
-          left: ${offsetSlider}px;
-          transition: left 0.6s ease-out;
+          width: calc(100% + 100px);
         }
       `}</style>
     </>

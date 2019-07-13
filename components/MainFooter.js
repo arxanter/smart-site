@@ -1,4 +1,24 @@
+import Link from 'next/link';
+
 export default function MainForm() {
+  const menuItmes = [
+    {
+      name: 'Главная',
+      link: '/',
+    },
+    {
+      name: 'Шаблоны решений',
+      link: '/solutions',
+    },
+    {
+      name: 'Портфолио',
+      link: '/portfolio',
+    },
+    {
+      name: 'Контакты',
+      link: '/contact',
+    },
+  ];
   return (
     <>
       <footer>
@@ -6,6 +26,15 @@ export default function MainForm() {
           <h1 style={{ lineHeight: '2em', textAlign: 'center' }}>LOGO</h1>
         </div>
         <div className="footer__info">
+          <div className="footer__links">
+            {menuItmes.map((el, index) => {
+              return (
+                <Link href={el.link} key={index}>
+                  <a>{el.name}</a>
+                </Link>
+              );
+            })}
+          </div>
           <span>Разработано в 2019. Все права защищены.©</span>
         </div>
         <div className="footer_social">
@@ -37,6 +66,12 @@ export default function MainForm() {
           justify-content: flex-end;
           align-items: center;
           font-size: 10px;
+        }
+        .footer__links {
+          padding-bottom: 20px;
+        }
+        .footer__links a {
+          padding: 10px;
         }
         .footer_social {
           display: flex;

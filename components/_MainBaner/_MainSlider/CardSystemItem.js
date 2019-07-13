@@ -13,13 +13,13 @@ export default function CardSystemItem(props) {
             <img
               src={`${fullIconAlias}${props.isActive ? '-white' : '-black'}.svg`}
               alt={`${props.item.name} иконка`}
-              style={{ width: '100%', objectFit: 'cover' }}
+              style={{ width: '100%', height: '100%' }}
             />
           </div>
           <div className="card__button">
-            <button className=" btn-secondary" onClick={props.onChange}>
+            <a className=" btn-secondary" href="#elements" onClick={props.onChange}>
               Подробнее
-            </button>
+            </a>
           </div>
           <div className="card__overlay" />
         </div>
@@ -79,7 +79,7 @@ export default function CardSystemItem(props) {
           left: 20px;
         }
         .card--active .card__title {
-          margin-left: 45px;
+          margin-left: 30px;
           padding-left: 5px;
           padding-top: 10px;
           color: var(--main-color);
@@ -108,6 +108,11 @@ export default function CardSystemItem(props) {
           top: 50%;
           right: -60px;
           background-color: var(--light-color);
+        }
+        @media (max-width: 650px) {
+          .card__image {
+            height: 150px;
+          }
         }
       `}</style>
     </>

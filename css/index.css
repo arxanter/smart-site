@@ -28,7 +28,7 @@
 
 :root {
   --main-color: #ff6f61;
-  --main-light-color: rgba(255, 111, 97, 0.45);
+  --light-main-color: rgba(255, 111, 97, 0.45);
   --dark-color: #262320;
   --light-color: #ffffff;
   --light-vis-color: rgba(255, 255, 255, 0.2);
@@ -123,9 +123,10 @@ button {
 .btn-primary,
 .btn-secondary,
 .btn-secondary-black {
+  display: inline-block;
   height: 2.2em;
   font-size: 14px;
-  line-height: 100%;
+  line-height: 2em;
   padding: 0 35px;
   border-radius: 28px;
   box-sizing: border-box;

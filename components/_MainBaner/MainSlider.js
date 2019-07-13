@@ -1,22 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import CardSystemItem from './_MainSlider/CardSystemItem';
+import React from 'react';
 
 export default function MainSlider(props) {
   const [systemsCount] = useState(props.systemsList ? props.systemsList.length : 1);
   const [sliderRef, setSliderRef] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [indicatorRef, setIndicatorRef] = useState();
+  useEffect(() => {
+    if (indicatorRef) indicatorRef.classList.add('--animate');
+  }, [indicatorRef]);
   const sliderSettings = {
-    arrow: false,
+    arrows: false,
+    adaptiveHeight: true,
     dots: false,
     infinity: true,
     autoplay: true,
     lazyLoad: true,
+    pauseOnHover: false,
     slidesToShow: 4,
     slidesToScroll: 1,
     speed: 500,
     autoplaySpeed: 5000,
     beforeChange: (oldIndex, newIndex) => {
-      console.log(newIndex);
+      setActiveIndex(newIndex);
+      indicatorRef.classList.remove('--animate');
+      setTimeout(() => {
+        indicatorRef.classList.add('--animate');
+      }, 500);
     },
     responsive: [
       {
@@ -32,7 +44,7 @@ export default function MainSlider(props) {
         },
       },
       {
-        breakpoint: 800,
+        breakpoint: 750,
         settings: {
           slidesToShow: 1,
         },
@@ -48,10 +60,15 @@ export default function MainSlider(props) {
       <section className="slider">
         <aside className="slider__sidebar">
           <span className="slider__count">
-            0{props.indexSystem + 1}
+            0{activeIndex + 1}
             <mark>/ 0{systemsCount}</mark>
           </span>
-          <div className="slider__indicator" />
+          <div
+            className="slider__indicator"
+            ref={c => {
+              setIndicatorRef(c);
+            }}
+          />
         </aside>
         <section className="slider__content">
           <div className="slider__navigation">
@@ -78,7 +95,14 @@ export default function MainSlider(props) {
           <div className="slider__body">
             <Slider {...sliderSettings} ref={c => setSliderRef(c)}>
               {props.systemsList.map((el, index) => (
-                <CardSystemItem item={el} isActive={index === props.indexSystem} key={index} />
+                <CardSystemItem
+                  item={el}
+                  isActive={index === activeIndex}
+                  key={index}
+                  onChange={() => {
+                    props.changeIndexSystem(index);
+                  }}
+                />
               ))}
             </Slider>
           </div>
@@ -137,7 +161,7 @@ export default function MainSlider(props) {
           margin-right: 0.4em;
           background-color: rgba(255, 255, 255, 0.45);
         }
-        .slider__indicator::before {
+        .slider__indicator.--animate::before {
           content: '';
           position: absolute;
           bottom: 0;
@@ -147,8 +171,9 @@ export default function MainSlider(props) {
           opacity: 0.8;
           box-shadow: 0 2px 8px 0 var(--main-color);
           animation-name: load;
+          animation-iteration-count: 1;
+          animation-fill-mode: forwards;
           animation-duration: 5s;
-          animation-iteration-count: infinite;
           animation-timing-function: linear;
         }
         .slider__content {
@@ -180,6 +205,18 @@ export default function MainSlider(props) {
         }
         .slider__body {
           width: calc(100% + 100px);
+        }
+        @media (max-width: 650px) {
+          .slider__body {
+            width: calc(100% - 20px);
+            padding: 5px;
+          }
+          .slider__navigation span {
+            font-size: 14px;
+          }
+          .slider__indicator {
+            height: 160px;
+          }
         }
       `}</style>
     </>

@@ -1,4 +1,9 @@
-import MainSlider from './_MainBaner/MainSlider';
+// import MainSlider from './_MainBaner/MainSlider';
+import dynamic from 'next/dynamic';
+// eslint-disable-next-line
+const MainSlider = dynamic(import('./_MainBaner/MainSlider'), {
+  ssr: false,
+});
 
 const MainBaner = props => {
   return (
@@ -10,7 +15,7 @@ const MainBaner = props => {
               Системы <mark>Умного дома</mark>
             </h1>
             <p>Монтаж и проектирование систем Автоматизации частных домов и коммерческой недвижимости</p>
-            <button className="btn-secondary">Заказать проект</button>
+            <a className="btn-secondary" href="#contact-form">Заказать проект</a>
           </section>
           <MainSlider {...props} />
         </div>
@@ -63,7 +68,7 @@ const MainBaner = props => {
           margin-top: 20px;
           max-width: 480px;
         }
-        .main-banner__content button {
+        .main-banner__content a {
           position: relative;
           bottom: -5em;
         }
@@ -71,8 +76,12 @@ const MainBaner = props => {
           .main-banner__content p {
             font-size: 14px;
           }
-          .main-banner__content button {
-            bottom: -2em;
+          .main-banner__content a {
+            bottom: -5.8em;
+          }
+          .main-banner__content::before,
+          .main-banner__content::after {
+            width: 70px;
           }
         }
       `}</style>

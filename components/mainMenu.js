@@ -49,7 +49,9 @@ export default function MenuComponent() {
               </div>
               <span>+ 7 (495) 645 08 72</span>
             </a>
-            <button className="btn-primary">Заказать звонок</button>
+            <a className="btn-primary" href="#contact-form">
+              Заказать звонок
+            </a>
           </div>
           <div className="burger-menu">
             <Menu bodyClassName={'nav'} width={'200px'} right>
@@ -64,6 +66,9 @@ export default function MenuComponent() {
                   );
                 })}
               </ul>
+              <a className="phone-number" href="tel:+74956450872">
+                <span>+ 7 (495) 645 08 72</span>
+              </a>
             </Menu>
           </div>
         </nav>
@@ -154,7 +159,7 @@ export default function MenuComponent() {
             display: none;
           }
           @media (max-width: 1000px) {
-            .nav__contact button {
+            .nav__contact a {
               display: none;
             }
             .nav li,

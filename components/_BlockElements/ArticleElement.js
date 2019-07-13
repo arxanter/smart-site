@@ -51,8 +51,8 @@ export default function ArticleElement({ article, img, imgGalery }) {
           background-color: var(--main-color);
         }
         .content {
-          width: 50%;
-          max-width: 400px;
+          width: 60%;
+          max-width: 800px;
           height: calc(100% - 40px);
           padding: 10px 30px;
           margin-top: 0.5em;
@@ -60,6 +60,14 @@ export default function ArticleElement({ article, img, imgGalery }) {
           overflow-y: auto;
           flex-shrink: 0;
           background-color: var(--light-vis-color);
+        }
+        .content::-webkit-scrollbar {
+          background-color: var(--main-color);
+        }
+        .content::-webkit-scrollbar-thumb {
+          background-color: var(--dark-vis-color);
+          border: 2px solid var(--main-color);
+          border-radius: 10px;
         }
         aside {
           display: flex;

@@ -1,7 +1,7 @@
 export default function BlockContactForm() {
   return (
     <>
-      <section>
+      <section id="contact-form">
         <div className="wrapper">
           <h2>
             <mark className="mark-underline">Контакты</mark>

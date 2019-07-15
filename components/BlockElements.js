@@ -1,6 +1,6 @@
 import ArticleElement from './_BlockElements/ArticleElement';
 
-export default function BlockElements(props) {
+export default function BlockElements({ systemsList = [], indexSystem, systemsData = [], changeIndexSystem }) {
   return (
     <>
       <div id="elements">
@@ -9,13 +9,13 @@ export default function BlockElements(props) {
         </h2>
         <section className="elements__container">
           <aside>
-            {props.systemsList.map((el, index) => {
-              const colorIcon = index === props.indexSystem ? 'white' : 'black';
+            {systemsList.map((el, index) => {
+              const colorIcon = index === indexSystem ? 'white' : 'black';
               return (
                 <button
-                  className={`elements__item ${index === props.indexSystem ? 'elements__item--active' : ''}`}
+                  className={`elements__item ${index === indexSystem ? 'elements__item--active' : ''}`}
                   onClick={() => {
-                    props.changeIndexSystem(index);
+                    changeIndexSystem(index);
                   }}
                   key={index}
                 >
@@ -29,7 +29,7 @@ export default function BlockElements(props) {
           </aside>
           <div className="elements__slider">
             <div>
-              {props.systemsData.map((item, index) => (
+              {systemsData.map((item, index) => (
                 <ArticleElement {...item} key={index} />
               ))}
             </div>
@@ -103,7 +103,7 @@ export default function BlockElements(props) {
         .elements__slider div {
           display: flex;
           height: 100%;
-          transform: translateX(calc(-100% * ${props.indexSystem}));
+          transform: translateX(calc(-100% * ${indexSystem}));
           transition: 0.6s ease-out;
         }
       `}</style>

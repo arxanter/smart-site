@@ -1,0 +1,95 @@
+import { useState } from 'react';
+
+export default function SideBar({ offers, typeOffers, activeOffer = {}, setActiveOffer }) {
+  const [activeType, setActiveType] = useState(typeOffers[0]);
+  return (
+    <>
+      <aside>
+        <h5>Проекты решений</h5>
+        <nav>
+          <ul className="offers-type-list">
+            {typeOffers.map((type, index) => {
+              return (
+                <li key={index}>
+                  <button
+                    className={`${type.name == activeType.name ? 'btn-primary' : 'btn-secondary-black'} offer-type-btn`}
+                    onClick={() => {
+                      setActiveType(type);
+                    }}
+                  >
+                    {type.name}
+                  </button>
+                  <ul className="offers-list">
+                    {type.name == activeType.name
+                      ? offers
+                          .filter(el => el.type === type.type)
+                          .map(offer => {
+                            return (
+                              <li
+                                key={offer.uid}
+                                className={`${activeOffer.uid === offer.uid ? '--active' : ''} offer-item`}
+                              >
+                                <button
+                                  onClick={() => {
+                                    setActiveOffer(offer);
+                                  }}
+                                >
+                                  {offer.name}
+                                </button>
+                              </li>
+                            );
+                          })
+                      : ''}
+                  </ul>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </aside>
+      <style jsx>{`
+        aside {
+          width: 250px;
+          padding: 20px 0;
+          box-shadow: 0 4px 27px 0 var(--dark-vis-color);
+          color: var(--dark-color);
+        }
+        aside h5 {
+          color: var(--dark-color);
+          margin: 20px 0;
+          margin-left: 40px;
+        }
+        .offer-item.--active {
+          color: var(--main-color);
+          position: relative;
+          margin-left: 30px;
+        }
+        .offer-item.--active::before {
+          position: absolute;
+          content: '';
+          top: 1em;
+          left: 10px;
+          width: 20px;
+          border: 1px solid var(--main-color);
+        }
+        .offer-item button {
+          font-size: 14px;
+          margin: 0.6em 0;
+          margin-left: 40px;
+        }
+        .offer-type-btn {
+          border-left: none;
+          border-bottom-left-radius: 0;
+          border-top-left-radius: 0;
+          margin: 10px 0;
+        }
+        .offer-type-btn.btn-primary {
+          width: 230px;
+        }
+        .offer-type-btn.btn-secondary-black {
+          width: 160px;
+        }
+      `}</style>
+    </>
+  );
+}

@@ -20,10 +20,7 @@ const menuItmes = [
   },
 ];
 
-export default function MenuComponent() {
-  const changeMenu = ev => {
-    console.log(ev);
-  };
+export default function MenuComponent({ activeName }) {
   return (
     <>
       <div className="nav-wrapper">
@@ -35,9 +32,7 @@ export default function MenuComponent() {
             {menuItmes.map((el, index) => {
               return (
                 <Link href={el.link} key={index}>
-                  <li className={el.name === 'Главная' ? 'active' : ''} onClick={changeMenu}>
-                    {el.name}
-                  </li>
+                  <li className={el.name === activeName ? 'active' : ''}>{el.name}</li>
                 </Link>
               );
             })}
@@ -59,9 +54,7 @@ export default function MenuComponent() {
                 {menuItmes.map((el, index) => {
                   return (
                     <Link href={el.link} key={index}>
-                      <li className={el.name === 'Главная' ? 'active' : ''} onClick={changeMenu}>
-                        {el.name}
-                      </li>
+                      <li className={el.name === 'Главная' ? 'active' : ''}>{el.name}</li>
                     </Link>
                   );
                 })}

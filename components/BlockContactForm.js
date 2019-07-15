@@ -1,4 +1,60 @@
+import { useState } from 'react';
+import React from 'react';
+import fetch from 'isomorphic-unfetch';
+
+const baseURL = '/api/v1/';
+
 export default function BlockContactForm() {
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  let timerFormErr = null;
+  const formError = React.createRef();
+  function sendForm() {
+    let isError = false;
+    if (timerFormErr) {
+      clearTimeout(timerFormErr);
+      timerFormErr = null;
+    }
+    const mailRegexp = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const phoneRegexp = /^[0-9+()\ ]+$/; // eslint-disable-line
+    if (!name) isError = true;
+    if (!phoneRegexp.test(phone)) isError = true;
+    if (!mailRegexp.test(email)) isError = true;
+    if (isError && formError.current) {
+      formError.current.style.visibility = 'visible';
+      timerFormErr = setTimeout(() => {
+        formError.current.style.visibility = 'hidden';
+      }, 2000);
+    } else {
+      const data = {
+        name,
+        phone,
+        email,
+        message,
+      };
+      fetch(baseURL + 'sendForm', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(res => {
+          if (res.status >= 400) {
+            console.log('Bad response from server');
+          } else return res.json();
+        })
+        .then(data => {
+          console.log(data);
+          setName('');
+          setEmail('');
+          setPhone('');
+          setMessage('');
+        });
+    }
+  }
   return (
     <>
       <section id="contact-form">
@@ -36,24 +92,53 @@ export default function BlockContactForm() {
             <div className="container">
               <label>
                 <span>Ваше имя</span>
-                <input type="text" />
+                <input
+                  type="text"
+                  value={name}
+                  onChange={ev => {
+                    setName(ev.target.value);
+                  }}
+                />
               </label>
               <label>
                 <span>Телефон</span>
-                <input type="phone" />
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={ev => {
+                    setPhone(ev.target.value);
+                  }}
+                />
               </label>
               <label>
                 <span>Электронный адрес</span>
-                <input type="text" />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={ev => {
+                    setEmail(ev.target.value);
+                  }}
+                />
               </label>
             </div>
             <label>
               <span>Сообщение</span>
-              <textarea type="text" />
+              <textarea
+                type="text"
+                value={message}
+                onChange={ev => {
+                  setMessage(ev.target.value);
+                }}
+              />
             </label>
           </form>
+          <span className="contact-form__error" ref={formError}>
+            Не верно заданы поля формы
+          </span>
           <div className="contact-form__action">
-            <button className="btn-secondary">Заказать проект</button>
+            <button className="btn-secondary" onClick={sendForm}>
+              Заказать проект
+            </button>
           </div>
         </div>
       </section>
@@ -146,6 +231,10 @@ export default function BlockContactForm() {
         .contact-form > * {
           width: 50%;
           max-width: 350px;
+        }
+        .contact-form__error {
+          visibility: hidden;
+          color: var(--main-color);
         }
         .contact-form__action {
           padding: 20px;

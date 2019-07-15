@@ -3,8 +3,8 @@ import Slider from 'react-slick';
 import CardSystemItem from './_MainSlider/CardSystemItem';
 import React from 'react';
 
-export default function MainSlider(props) {
-  const [systemsCount] = useState(props.systemsList ? props.systemsList.length : 1);
+export default function MainSlider({ systemsList = [], changeIndexSystem }) {
+  const [systemsCount] = useState(systemsList ? systemsList.length : 1);
   const [sliderRef, setSliderRef] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [indicatorRef, setIndicatorRef] = useState();
@@ -94,13 +94,13 @@ export default function MainSlider(props) {
           </div>
           <div className="slider__body">
             <Slider {...sliderSettings} ref={c => setSliderRef(c)}>
-              {props.systemsList.map((el, index) => (
+              {systemsList.map((el, index) => (
                 <CardSystemItem
                   item={el}
                   isActive={index === activeIndex}
                   key={index}
                   onChange={() => {
-                    props.changeIndexSystem(index);
+                    changeIndexSystem(index);
                   }}
                 />
               ))}

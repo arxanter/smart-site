@@ -15,7 +15,7 @@ export default function Index(props) {
   const [indexSystem, changeIndexSystem] = useState(0);
   return (
     <>
-      <Menu />
+      <Menu activeName={'Главная'} />
       <main>
         <MainBaner indexSystem={indexSystem} changeIndexSystem={changeIndexSystem} systemsList={props.systemsList} />
         <BlockElements
@@ -36,8 +36,9 @@ export default function Index(props) {
 }
 
 Index.getInitialProps = async () => {
-  let baseURL = process ? process.env.HOST : '';
+  let baseURL = process ? process.env.HOST || '' : '';
   baseURL += '/api/v1/';
+
   try {
     const promises = [];
     promises.push(fetch(baseURL + 'systemsList'));

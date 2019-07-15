@@ -24,7 +24,7 @@ export default function ArticleElement({ article, img, imgGalery }) {
               }}
               aria-label="Навигация влево"
             >
-              <img src="/static/icons/_arrows/arrow-left-black.svg" />
+              <img src="/static/icons/_arrows/arrow-left-black.svg" alt="Иконка стрелка влево" />
             </button>
             <div className="content__slider__image">
               <img src={`/static/img/${imgGalery[indexSliderImage].src}`} alt={imgGalery[indexSliderImage].alt} />
@@ -35,7 +35,7 @@ export default function ArticleElement({ article, img, imgGalery }) {
               }}
               aria-label="Навигация вправо"
             >
-              <img src="/static/icons/_arrows/arrow-right-black.svg" />
+              <img src="/static/icons/_arrows/arrow-right-black.svg" alt="Иконка стрелка вправо" />
             </button>
           </div>
         </aside>
@@ -60,6 +60,7 @@ export default function ArticleElement({ article, img, imgGalery }) {
           overflow-y: auto;
           flex-shrink: 0;
           background-color: var(--light-vis-color);
+          overscroll-bahavior: none;
         }
         .content::-webkit-scrollbar {
           background-color: var(--main-color);

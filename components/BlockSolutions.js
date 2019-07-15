@@ -66,7 +66,7 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
           </nav>
           <div className="container">
             {activeOffer.draftImg ? (
-              <img src={`/static/img/${activeOffer.draftImg}`} className="img-offer" alt="" />
+              <img src={`/static/img/${activeOffer.draftImg}`} className="img-offer" alt="Схема шаблона" />
             ) : (
               <div style={{ maxWidth: '450px' }}></div>
             )}

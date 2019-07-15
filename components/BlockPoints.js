@@ -4,21 +4,25 @@ export default function BlockPoints() {
       name: 'Составление ТЗ',
       text: 'Составление технического задания исходя из пожеланий клиента',
       icon: 'list.svg',
+      alt: 'Иконка список задач',
     },
     {
       name: 'Проектирование',
       text: 'Разработка проектной документации и подбор оборудования',
       icon: 'monitor.svg',
+      alt: 'Иконка монитор',
     },
     {
       name: 'Монтажные работы',
       text: 'Монтаж оборудования и прокладка кабельных трасс',
       icon: 'tools.svg',
+      alt: 'Иконка инструменты',
     },
     {
       name: 'Пусконаладочные работы',
       text: 'Программирование и отладка систем автоматизации',
       icon: 'gears.svg',
+      alt: 'Иконка шестерни',
     },
   ];
   return (
@@ -32,7 +36,11 @@ export default function BlockPoints() {
             return (
               <li className="point" key={index}>
                 <div className="point__icon">
-                  <img src={`/static/icons/_points/${el.icon}`} style={{ width: '100%', height: '100%' }} />
+                  <img
+                    src={`/static/icons/_points/${el.icon}`}
+                    style={{ width: '100%', height: '100%' }}
+                    alt={el.alt}
+                  />
                 </div>
                 <h3 className="point__name">{el.name}</h3>
                 <span className="point__text">{el.text}</span>

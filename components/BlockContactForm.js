@@ -10,19 +10,19 @@ export default function BlockContactForm() {
             <ul>
               <li className="contact__info__item">
                 <div className="contact__info__icon">
-                  <img src="/static/icons/phone-white.svg" alt="" />
+                  <img src="/static/icons/phone-white.svg" alt="Иконка телефон" />
                 </div>
                 <span>+7(495) 645 08 72</span>
               </li>
               <li className="contact__info__item">
                 <div className="contact__info__icon">
-                  <img src="/static/icons/email-white.svg" alt="" />
+                  <img src="/static/icons/email-white.svg" alt="Иконка электронная почта" />
                 </div>
                 <span>info@stativa.ru</span>
               </li>
               <li className="contact__info__item">
                 <div className="contact__info__icon">
-                  <img src="/static/icons/address-white.svg" alt="" />
+                  <img src="/static/icons/address-white.svg" alt="Иконка почтовый адрес" />
                 </div>
                 <span>Москва, Б. Марфинская, 4/6</span>
               </li>

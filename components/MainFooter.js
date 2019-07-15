@@ -38,11 +38,11 @@ export default function MainForm() {
           <span>Разработано в 2019. Все права защищены.©</span>
         </div>
         <div className="footer_social">
-          <a href="#">
-            <img src="/static/icons/instagram.svg" alt="" style={{ width: '100%', height: '100%' }} />
+          <a href="#" name="Наша страница Instagram">
+            <img src="/static/icons/instagram.svg" alt="Иконка instagram" style={{ width: '100%', height: '100%' }} />
           </a>
-          <a href="#">
-            <img src="/static/icons/facebook.svg" alt="" style={{ width: '100%', height: '100%' }} />
+          <a href="#" name="Наша страница Instagram">
+            <img src="/static/icons/facebook.svg" alt="Иконка facebook" style={{ width: '100%', height: '100%' }} />
           </a>
         </div>
       </footer>

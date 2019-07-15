@@ -45,7 +45,7 @@ export default function MenuComponent() {
           <div className="nav__contact">
             <a className="phone-number" href="tel:+74956450872">
               <div className="phone-icon">
-                <img src="static/icons/phone-white.svg" />
+                <img src="static/icons/phone-white.svg" alt="Иконка телефоная трубка" />
               </div>
               <span>+ 7 (495) 645 08 72</span>
             </a>

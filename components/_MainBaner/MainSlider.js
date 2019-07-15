@@ -80,7 +80,7 @@ export default function MainSlider(props) {
                 }}
                 aria-label="Навигация влево"
               >
-                <img src="/static/icons/_arrows/arrow-left-white.svg" />
+                <img src="/static/icons/_arrows/arrow-left-white.svg" alt="Иконка стрелка влево" />
               </button>
               <button
                 onClick={() => {
@@ -88,7 +88,7 @@ export default function MainSlider(props) {
                 }}
                 aria-label="Навигация вправо"
               >
-                <img src="/static/icons/_arrows/arrow-right-white.svg" />
+                <img src="/static/icons/_arrows/arrow-right-white.svg" alt="Иконка стрелка вправо" />
               </button>
             </div>
           </div>

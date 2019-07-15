@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Частный дом №2',
+  subName: 'Егорушкин',
   square: 250,
   price: '1 160 000',
   brands: 'Wirenboard, SJ-electronics, RD, ТЕКО, Arlight, Neptun, Ubiquiti, Synology, IridiumMobile',

@@ -3,7 +3,7 @@ export default function BlockMarketing() {
     <>
       <section className="block-marketing">
         <div className="block-marketing__offer">
-          <img className="block-marketing__img" src="/static/img/alisa.png" alt="" />
+          <img className="block-marketing__img" src="/static/img/alisa.png" alt="Голосовой помощник алиса" />
           <div className="block-marketing__desc">
             <span>при заказе до 20 июля</span>
             <h3>Голосовое управление в подарок</h3>

@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Частный дом №1',
+  subName: 'Вадим',
   square: 180,
   price: '1 460 000',
   brands: 'KNX, Satel, Xxter, MDT, K-bus, Rvi ',

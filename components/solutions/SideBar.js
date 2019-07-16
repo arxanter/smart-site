@@ -1,7 +1,11 @@
 import { useState } from 'react';
 
-export default function SideBar({ offers, typeOffers, activeOffer = {}, setActiveOffer }) {
+export default function SideBar({ offers, typeOffers, activeOffer = {}, onChangeOffer }) {
   const [activeType, setActiveType] = useState(typeOffers[0]);
+  const changeActiveType = type => {
+    setActiveType(type);
+    onChangeOffer(offers.filter(el => el.type === type.type)[0]);
+  };
   return (
     <>
       <aside>
@@ -14,7 +18,7 @@ export default function SideBar({ offers, typeOffers, activeOffer = {}, setActiv
                   <button
                     className={`${type.name == activeType.name ? 'btn-primary' : 'btn-secondary-black'} offer-type-btn`}
                     onClick={() => {
-                      setActiveType(type);
+                      changeActiveType(type);
                     }}
                   >
                     {type.name}
@@ -31,7 +35,7 @@ export default function SideBar({ offers, typeOffers, activeOffer = {}, setActiv
                               >
                                 <button
                                   onClick={() => {
-                                    setActiveOffer(offer);
+                                    onChangeOffer(offer);
                                   }}
                                 >
                                   {offer.name}
@@ -51,12 +55,12 @@ export default function SideBar({ offers, typeOffers, activeOffer = {}, setActiv
         aside {
           width: 250px;
           padding: 20px 0;
+          flex-shrink: 0;
           box-shadow: 0 4px 27px 0 var(--dark-vis-color);
           color: var(--dark-color);
         }
         aside h5 {
           color: var(--dark-color);
-          margin: 20px 0;
           margin-left: 40px;
         }
         .offer-item.--active {

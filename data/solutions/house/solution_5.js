@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'Частный дом №2',
+  name: 'Частный дом №3',
   subName: 'Егорушкин',
   square: 250,
   price: '1 160 000',

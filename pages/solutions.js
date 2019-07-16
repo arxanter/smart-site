@@ -2,24 +2,33 @@ import { useState } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Menu from '../components/mainMenu';
 import MainFooter from '../components/MainFooter';
-import SideBar from '../components/SideBar';
-import OfferPreview from '../components/OfferPreview';
-import OfferSystems from '../components/OfferSystems';
+import SideBar from '../components/solutions/SideBar';
+import OfferPreview from '../components/solutions/OfferPreview';
+import OfferSystems from '../components/solutions/OfferSystems';
 export default function Solutions({ offers, typeOffers }) {
   const [activeOffer, setActiveOffer] = useState(offers.filter(offer => offer.type === typeOffers[0].type)[0]);
   return (
     <>
       <Menu activeName={'Шаблоны решений'}></Menu>
       <section className="main-block">
-        <SideBar offers={offers} typeOffers={typeOffers} activeOffer={activeOffer} onChange={setActiveOffer}></SideBar>
+        <SideBar
+          offers={offers}
+          typeOffers={typeOffers}
+          activeOffer={activeOffer}
+          onChangeOffer={setActiveOffer}
+        ></SideBar>
         <OfferPreview offer={activeOffer}></OfferPreview>
-        <OfferSystems offer={activeOffer}></OfferSystems>
       </section>
+      <OfferSystems offer={activeOffer}></OfferSystems>
       <MainFooter></MainFooter>
       <style jsx>
         {`
           .main-block {
             display: flex;
+          }
+          .main-block > * {
+            flex-grow: 1;
+            flex-shrink: 0;
           }
         `}
       </style>

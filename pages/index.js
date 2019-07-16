@@ -2,14 +2,14 @@ import { useState } from 'react';
 import fetch from 'isomorphic-unfetch';
 // Components
 import Menu from '../components/mainMenu';
-import MainBaner from '../components/mainBaner';
+import MainBaner from '../components/main/MainBaner';
 import MainFooter from '../components/MainFooter';
-import BlockElements from '../components/BlockElements';
-import BlockPoints from '../components/BlockPoints';
-import BlockSolutions from '../components/BlockSolutions';
-import BlockMarketing from '../components/BlockMarketing';
-import BlockPortfolio from '../components/BlockPortfolio';
-import BlockContactForm from '../components/BlockContactForm';
+import BlockElements from '../components/main/BlockElements';
+import BlockPoints from '../components/main/BlockPoints';
+import BlockSolutions from '../components/main/BlockSolutions';
+import BlockMarketing from '../components/main/BlockMarketing';
+import BlockPortfolio from '../components/main/BlockPortfolio';
+import BlockContactForm from '../components/main/BlockContactForm';
 
 export default function Index(props) {
   const [indexSystem, changeIndexSystem] = useState(0);

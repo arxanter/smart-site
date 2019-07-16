@@ -1,8 +1,17 @@
-export default function OfferPreview() {
+import DescSystem from '../other/DescSystem';
+export default function OfferSystems({ systems = [] }) {
   return (
     <>
-      <div>Hello</div>
-      <style jsx>{``}</style>
+      <section>
+        {systems.map((el, index) => {
+          return <DescSystem system={el} key={index} reverse={index % 2 !== 0} />;
+        })}
+      </section>
+      <style jsx>{`
+        section {
+          background-color: var(--gray-vis-color);
+        }
+      `}</style>
     </>
   );
 }

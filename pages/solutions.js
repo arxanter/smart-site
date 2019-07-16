@@ -19,7 +19,18 @@ export default function Solutions({ offers, typeOffers }) {
         ></SideBar>
         <OfferPreview offer={activeOffer}></OfferPreview>
       </section>
-      <OfferSystems offer={activeOffer}></OfferSystems>
+      <OfferSystems systems={activeOffer ? activeOffer.systemsList : []}></OfferSystems>
+      <section className="block-action">
+        <div className="block-action__wrapper">
+          <div className="block-action__offer">
+            <h3>Объект {activeOffer ? activeOffer.name : ''}</h3>
+            <span>
+              стоимость решения <span className="block-cost">{activeOffer ? activeOffer.price : ''} руб</span>
+            </span>
+          </div>
+          <button className="btn-secondary">Заказать расчет</button>
+        </div>
+      </section>
       <MainFooter></MainFooter>
       <style jsx>
         {`
@@ -29,6 +40,37 @@ export default function Solutions({ offers, typeOffers }) {
           .main-block > * {
             flex-grow: 1;
             flex-shrink: 0;
+          }
+          .block-action {
+            background-image: url('/static/img/bg-marketing-red.png');
+            padding: 40px 20px;
+          }
+          .block-action__wrapper {
+            display: flex;
+            max-width: 600px;
+            justify-content: space-between;
+            align-items: center;
+            margin: auto;
+          }
+          .block-action__offer {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+          }
+          .block-action__offer h3 {
+            display: inline-block;
+            padding: 0;
+            color: var(--light-color);
+            font-weight: 500;
+          }
+          .block-action__offer span {
+            color: var(--dark-color);
+            font-family: 'Museo Cyrlic', Helvetica, sans-serif;
+            line-height: 28px;
+            margin-top: 10px;
+          }
+          .block-cost {
+            font-size: 28px;
           }
         `}
       </style>

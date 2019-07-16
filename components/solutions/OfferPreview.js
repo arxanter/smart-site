@@ -26,7 +26,8 @@ export default function OfferPreview({ offer = {} }) {
           margin: 10px 0;
         }
         .img-offer {
-          max-width: 50%;
+          width: 50%;
+          max-width: 600px;
           margin: 0 20px;
         }
         .block-info {

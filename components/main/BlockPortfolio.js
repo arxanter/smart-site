@@ -3,37 +3,37 @@ export default function BlockPortfolio() {
     {
       header: 'Объект 1',
       desc: 'Удобная квартира в Москве',
-      src: 'portfolio_1.jpg',
+      src: 'preview/portfolio_1.jpg',
       alt: '',
     },
     {
       header: 'Объект 2',
       desc: 'Удобная квартира в Москве',
-      src: 'portfolio_2.jpg',
+      src: 'preview/portfolio_2.jpg',
       alt: '',
     },
     {
       header: 'Объект 3',
       desc: 'Удобная квартира в Москве',
-      src: 'portfolio_3.jpg',
+      src: 'preview/portfolio_3.jpg',
       alt: '',
     },
     {
       header: 'Объект 4',
       desc: 'Удобная квартира в Москве',
-      src: 'portfolio_4.jpg',
+      src: 'preview/portfolio_4.jpg',
       alt: '',
     },
     {
       header: 'Объект 5',
       desc: 'Удобная квартира в Москве',
-      src: 'portfolio_5.jpg',
+      src: 'preview/portfolio_5.jpg',
       alt: '',
     },
     {
       header: 'Объект 6',
       desc: 'Удобная квартира в Москве',
-      src: 'portfolio_6.jpg',
+      src: 'preview/portfolio_6.jpg',
       alt: '',
     },
   ];

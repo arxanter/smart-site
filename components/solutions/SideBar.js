@@ -56,7 +56,7 @@ export default function SideBar({ offers, typeOffers, activeOffer = {}, onChange
           width: 250px;
           padding: 20px 0;
           flex-shrink: 0;
-          box-shadow: 0 4px 27px 0 var(--dark-vis-color);
+          box-shadow: 0 -10px 27px 0 var(--dark-vis-color);
           color: var(--dark-color);
         }
         aside h5 {

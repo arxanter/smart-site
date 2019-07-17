@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
 import Slider from 'react-slick';
 
-export default function SliderObjects({ activeObject = {}, portfolio, onChange, ref }) {
+export default function SliderObjects({ activeObject = {}, portfolio, onChange, refLink }) {
   const sliderObjects = {
     arrows: false,
     dots: false,
@@ -10,6 +9,10 @@ export default function SliderObjects({ activeObject = {}, portfolio, onChange, 
     lazyLoad: true,
     slidesToShow: 4,
     slidesToScroll: 1,
+    beforeChange: (oldIndex, newIndex) => {
+      const el = portfolio[newIndex];
+      onChange(el);
+    },
     responsive: [
       {
         breakpoint: 1600,
@@ -31,15 +34,13 @@ export default function SliderObjects({ activeObject = {}, portfolio, onChange, 
       },
     ],
   };
-  const refSliderObjects = React.createRef();
   const changeActiveObject = (el, index) => {
-    onChange(el);
-    refSliderObjects.current.slickGoTo(index);
+    refLink.current.slickGoTo(index);
   };
   return (
     <>
       <div className="slider-objects">
-        <Slider {...sliderObjects} ref={refSliderObjects}>
+        <Slider {...sliderObjects} ref={refLink}>
           {portfolio.map((el, index) => {
             return (
               <a

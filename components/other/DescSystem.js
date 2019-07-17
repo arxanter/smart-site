@@ -38,7 +38,7 @@ export default function DescSystem({ system, reverse }) {
           color: var(--dark-color);
           padding: 40px 0;
           padding-right: 0;
-          max-width: 1600px;
+          max-width: 1200px;
           margin: auto;
         }
         .header {

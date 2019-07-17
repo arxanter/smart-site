@@ -26,6 +26,13 @@ export default function ProtfolioMainBlock({ activeObject = {}, portfolio, onCha
     autoplaySpeed: 5000,
   };
   const refSlider = React.createRef();
+  const refObject = React.createRef();
+  function eventObjectsRight() {
+    refObject.current.slickNext();
+  }
+  function eventObjectsLeft() {
+    refObject.current.slickPrev();
+  }
   return (
     <>
       <header>
@@ -34,7 +41,12 @@ export default function ProtfolioMainBlock({ activeObject = {}, portfolio, onCha
             Объект «<mark className="mark-underline">{activeObject.name}</mark>»
           </h3>
           <div className="controls">
-            <ControlSlider color={'black'} size={32}></ControlSlider>
+            <ControlSlider
+              onLeft={eventObjectsLeft}
+              onRight={eventObjectsRight}
+              color={'black'}
+              size={32}
+            ></ControlSlider>
           </div>
         </div>
         <BlockCounts
@@ -67,7 +79,12 @@ export default function ProtfolioMainBlock({ activeObject = {}, portfolio, onCha
           ></ControlSlider>
         </div>
       </div>
-      <SliderObjects portfolio={portfolio} activeObject={activeObject} onChange={onChange}></SliderObjects>
+      <SliderObjects
+        portfolio={portfolio}
+        activeObject={activeObject}
+        onChange={onChange}
+        refLink={refObject}
+      ></SliderObjects>
       <style jsx>{`
         header {
           display: flex;
@@ -80,6 +97,8 @@ export default function ProtfolioMainBlock({ activeObject = {}, portfolio, onCha
           display: flex;
           align-items: center;
           margin-left: 20px;
+          justify-content: space-between;
+          width: 500px;
         }
         .header__name .controls {
           margin-left: 20px;

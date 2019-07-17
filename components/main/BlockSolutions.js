@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import BlockOffer from './_BlockSolutions/BlockOffer';
+import ControlSlider from '../other/ControlSlider';
 
 export default function BlockSolutions({ typeOffers = [], offers }) {
   const [activeType, setActiveType] = useState(typeOffers[0].type);
@@ -41,7 +42,7 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
       <section className="block__solutions">
         <div className="header">
           <h2>
-            Проекты<mark className="mark-underline">решений</mark>
+            Проекты <mark className="mark-underline">решений</mark>
           </h2>
           <a className="link-offers" href="">
             Все решения
@@ -74,28 +75,19 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
               <div className="offer__header">
                 <h3>{activeOffer.name}</h3>
                 <div className="offer__header__nav">
-                  <button
-                    disabled={activeOfferIndex === 0}
-                    onClick={() => {
-                      changeOffer('-');
-                    }}
-                    aria-label="Навигация влево"
+                  <ControlSlider
+                    onLeft={changeOffer}
+                    onRight={changeOffer}
+                    disableLeft={activeOfferIndex === 0}
+                    disableRight={activeOfferIndex + 1 >= filteredOffers.length}
+                    color={'black'}
+                    size={28}
                   >
-                    <img src="/static/icons/_arrows/arrow-left-black.svg" alt="Иконка стрелки влево" />
-                  </button>
-                  <span className="offer__header__counter">
-                    {currectCount(activeOfferIndex + 1)}
-                    <mark>/{currectCount(filteredOffers.length)}</mark>
-                  </span>
-                  <button
-                    disabled={activeOfferIndex + 1 >= filteredOffers.length}
-                    onClick={() => {
-                      changeOffer('+');
-                    }}
-                    aria-label="Навигация вправо"
-                  >
-                    <img src="/static/icons/_arrows/arrow-right-black.svg" alt="Иконка стрелки вправо" />
-                  </button>
+                    <span className="offer__header__counter">
+                      {currectCount(activeOfferIndex + 1)}
+                      <mark>/{currectCount(filteredOffers.length)}</mark>
+                    </span>
+                  </ControlSlider>
                 </div>
               </div>
               <BlockOffer offer={activeOffer} />
@@ -153,9 +145,6 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
         .offer__header__nav {
           display: flex;
           align-items: center;
-        }
-        .offer__header__nav button {
-          width: 28px;
         }
         .offer__header__counter {
           font-size: 20px;

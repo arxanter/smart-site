@@ -1,6 +1,6 @@
 import ReactMarkdown from 'react-markdown';
 import { useState } from 'react';
-
+import ControlSlider from '../../other/ControlSlider';
 export default function ArticleElement({ article, img, imgGalery }) {
   const [indexSliderImage, setIndexSliderImage] = useState(0);
   function sliderEvent(direction) {
@@ -18,25 +18,11 @@ export default function ArticleElement({ article, img, imgGalery }) {
             <img src={`/static/img/${img.src}`} alt={img.alt} />
           </div>
           <div className="content__slider">
-            <button
-              onClick={() => {
-                sliderEvent('-');
-              }}
-              aria-label="Навигация влево"
-            >
-              <img src="/static/icons/_arrows/arrow-left-black.svg" alt="Иконка стрелка влево" />
-            </button>
-            <div className="content__slider__image">
-              <img src={`/static/img/${imgGalery[indexSliderImage].src}`} alt={imgGalery[indexSliderImage].alt} />
-            </div>
-            <button
-              onClick={() => {
-                sliderEvent('+');
-              }}
-              aria-label="Навигация вправо"
-            >
-              <img src="/static/icons/_arrows/arrow-right-black.svg" alt="Иконка стрелка вправо" />
-            </button>
+            <ControlSlider onLeft={sliderEvent} onRight={sliderEvent} color={'black'} size={32}>
+              <div className="content__slider__image">
+                <img src={`/static/img/${imgGalery[indexSliderImage].src}`} alt={imgGalery[indexSliderImage].alt} />
+              </div>
+            </ControlSlider>
           </div>
         </aside>
       </article>
@@ -103,9 +89,6 @@ export default function ArticleElement({ article, img, imgGalery }) {
         .content__slider__image img {
           object-fit: cover;
           transition: 0.2s ease-out;
-        }
-        .content__slider button {
-          width: 32px;
         }
       `}</style>
     </>

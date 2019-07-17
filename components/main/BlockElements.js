@@ -5,7 +5,7 @@ export default function BlockElements({ systemsList = [], indexSystem, systemsDa
     <>
       <div id="elements">
         <h2>
-          <mark className="mark-underline">Элементы</mark>умного дома
+          <mark className="mark-underline">Элементы</mark> умного дома
         </h2>
         <section className="elements__container">
           <aside>

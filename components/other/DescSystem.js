@@ -13,7 +13,11 @@ export default function DescSystem({ system, reverse }) {
         <div className={`desc ${reverse ? 'desc--reverse' : ''}`}>
           <ul className="desc__points">
             {system.points.map((el, index) => {
-              return <li key={index}>{el}</li>;
+              return (
+                <li key={index} className="list-item">
+                  {el}
+                </li>
+              );
             })}
           </ul>
           <div className="desc__info">
@@ -83,20 +87,10 @@ export default function DescSystem({ system, reverse }) {
           border-left: 0;
         }
         .desc__points li {
+          position: relative;
           margin: 20px 0;
           margin-left: 20px;
-          position: relative;
-        }
-        .desc__points li::before {
-          content: '';
-          position: absolute;
-          top: 0.25em;
-          left: -1.4em;
-          width: 7px;
-          height: 7px;
-          border-radius: 7px;
-          background-color: var(--main-color);
-          box-shadow: 0 0 0 4px rgba(255, 111, 97, 0.45);
+          font-weight: 600;
         }
         .desc__info {
           max-width: 600px;

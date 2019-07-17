@@ -75,6 +75,7 @@ export default function CardSystemItem(props) {
           font-family: 'Open sans';
           font-size: 18px;
           font-weight: 700;
+          color: var(--light-color);
           padding: 0;
           left: 20px;
         }

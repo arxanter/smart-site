@@ -1,5 +1,5 @@
-import DescSystem from '../other/DescSystem';
-export default function OfferSystems({ systems = [] }) {
+import DescSystem from './DescSystem';
+export default function DescSystems({ systems = [] }) {
   return (
     <>
       <section>

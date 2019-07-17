@@ -4,8 +4,9 @@ import Menu from '../components/mainMenu';
 import MainFooter from '../components/MainFooter';
 import SideBar from '../components/solutions/SideBar';
 import OfferPreview from '../components/solutions/OfferPreview';
-import OfferSystems from '../components/solutions/OfferSystems';
-export default function Solutions({ offers, typeOffers }) {
+import DescSystems from '../components/other/DescSystems';
+
+export default function SolutionsPage({ offers, typeOffers }) {
   const [activeOffer, setActiveOffer] = useState(offers.filter(offer => offer.type === typeOffers[0].type)[0]);
   return (
     <>
@@ -19,7 +20,7 @@ export default function Solutions({ offers, typeOffers }) {
         ></SideBar>
         <OfferPreview offer={activeOffer}></OfferPreview>
       </section>
-      <OfferSystems systems={activeOffer ? activeOffer.systemsList : []}></OfferSystems>
+      <DescSystems systems={activeOffer ? activeOffer.systemsList : []}></DescSystems>
       <section className="block-action">
         <div className="block-action__wrapper">
           <div className="block-action__offer">
@@ -69,6 +70,17 @@ export default function Solutions({ offers, typeOffers }) {
             line-height: 28px;
             margin-top: 10px;
           }
+          .block-action__wrapper button:hover {
+            color: var(--dark-color);
+            border-color: var(--dark-color);
+            opacity: 0.8;
+          }
+          .block-action__wrapper button:active {
+            color: var(--dark-color);
+            border-color: var(--dark-color);
+            opacity: 0.4;
+          }
+
           .block-cost {
             font-size: 28px;
           }
@@ -78,7 +90,7 @@ export default function Solutions({ offers, typeOffers }) {
   );
 }
 
-Solutions.getInitialProps = async () => {
+SolutionsPage.getInitialProps = async () => {
   let baseURL = process ? process.env.HOST || '' : '';
   baseURL += '/api/v1/';
   const res = await fetch(baseURL + 'offers');

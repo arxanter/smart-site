@@ -85,7 +85,7 @@ export default function BlockContactForm() {
             </ul>
           </div>
           <div className="contact__desc">
-            <h4>Остались вопросы?</h4>
+            <h4 style={{ color: 'var(--light-color)' }}>Остались вопросы?</h4>
             <span>Пожалуйста, заполните необходимые данные, и мы свяжемся с вами в ближайшее время</span>
           </div>
           <form className="contact-form" name="contact-form">

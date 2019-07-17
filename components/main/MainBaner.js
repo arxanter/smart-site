@@ -58,6 +58,9 @@ const MainBaner = props => {
           right: 0;
           border-left: 0;
         }
+        .main-banner__content h1 {
+          color: var(--light-color);
+        }
         .main-banner__content h1 mark {
           background-color: transparent;
           color: var(--main-color);

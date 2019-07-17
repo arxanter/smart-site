@@ -29,7 +29,7 @@ export default function BlockPoints() {
     <>
       <section>
         <h2>
-          <mark className="mark-underline">Схема</mark>выполнения
+          <mark className="mark-underline">Схема</mark> выполнения
         </h2>
         <ul className="container-points">
           {points.map((el, index) => {

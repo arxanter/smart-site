@@ -20,11 +20,10 @@
   font-weight: 900;
 }
 
-
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap&subset=cyrillic');
 
-@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css");
-@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css");
+@import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css');
 
 :root {
   --main-color: #ff6f61;
@@ -66,6 +65,7 @@ h6 {
   font-family: 'Museo Cyrlic', Helvetica, sans-serif;
   margin: 0;
   padding: 0;
+  color: var(--dark-color);
 }
 
 h1 {
@@ -76,7 +76,6 @@ h2 {
   text-align: center;
   padding: 40px 0;
   font-size: 36px;
-  color: var(--dark-color);
 }
 
 h3 {
@@ -119,7 +118,6 @@ button {
   color: inherit;
   cursor: pointer;
 }
-
 .btn-primary,
 .btn-secondary,
 .btn-secondary-black {
@@ -147,7 +145,8 @@ button {
   border: 1px solid var(--dark-color);
   color: var(--dark-color);
 }
-.btn-secondary:hover, .btn-secondary-black:hover {
+.btn-secondary:hover,
+.btn-secondary-black:hover {
   background-color: var(--main-color);
   border: 1px solid var(--main-color);
   color: var(--light-color);
@@ -169,7 +168,6 @@ button:disabled {
 
 .mark-underline {
   color: inherit;
-  margin: 10px;
   background: linear-gradient(180deg, transparent 50%, var(--main-color) 0);
 }
 .md-section h3 {
@@ -196,6 +194,24 @@ button:disabled {
   border-radius: 7px;
   border: solid 4px var(--main-color);
   background-color: var(--light-color);
+}
+li.list-item {
+  position: relative;
+  margin: 20px 0;
+  margin-left: 20px;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+li.list-item::before {
+  content: '';
+  position: absolute;
+  top: 0.25em;
+  left: -1.4em;
+  width: 7px;
+  height: 7px;
+  border-radius: 7px;
+  background-color: var(--main-color);
+  box-shadow: 0 0 0 4px rgba(255, 111, 97, 0.45);
 }
 @media (max-width: 1000px) {
   h2 {

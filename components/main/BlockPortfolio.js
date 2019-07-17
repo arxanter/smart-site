@@ -41,7 +41,7 @@ export default function BlockPortfolio() {
     <>
       <section className="block-porfolio">
         <h2>
-          Наши<mark className="mark-underline">работы</mark>
+          Наши <mark className="mark-underline">работы</mark>
         </h2>
         <div className="portfolio__items">
           {portfolioArray.map((el, index) => {

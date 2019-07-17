@@ -1,12 +1,14 @@
 const express = require('express');
 const compression = require('compression');
 const bodyParser = require('body-parser');
+const minify = require('express-minify');
 const nodemailer = require('nodemailer');
 const next = require('next');
 const fs = require('fs');
 const { promisify } = require('util');
 const readFile = promisify(fs.readFile);
 const getOffers = require('./data/solutions/index');
+const getPortfolio = require('./data/portfolio/index');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -52,17 +54,20 @@ app
   .prepare()
   .then(() => {
     const server = express();
-    server.use(compression());
+    if (!dev) {
+      server.use(compression());
+      server.use(minify());
+    }
     server.use(bodyParser.json());
-
+    const baseUrl = '/api/v1';
     /**
      * Custom routers
      */
-    server.get('/api/v1/systemsList', async (req, res) => {
+    server.get(`${baseUrl}/systemsList`, async (req, res) => {
       const data = await readFile('./data/systems/index.json', 'utf8');
       res.send(data);
     });
-    server.get('/api/v1/systemArticle/:fileName', async (req, res) => {
+    server.get(`${baseUrl}/systemArticle/:fileName`, async (req, res) => {
       try {
         const data = await readFile(`./data/systems/articles/${req.params.fileName}`, 'utf8');
         res.send(data);
@@ -70,11 +75,15 @@ app
         res.status(404).end('Smth wrong');
       }
     });
-    server.get('/api/v1/offers', async (req, res) => {
+    server.get(`${baseUrl}/offers`, async (req, res) => {
       const data = await getOffers();
       res.send(data);
     });
-    server.post('/api/v1/sendForm', async (req, res) => {
+    server.get(`${baseUrl}/portfolio`, async (req, res) => {
+      const data = await getPortfolio();
+      res.send(data);
+    });
+    server.post(`${baseUrl}/sendForm`, async (req, res) => {
       const data = req.body;
       sendMail(data);
       res.status(200).send({ status: 'OK' });

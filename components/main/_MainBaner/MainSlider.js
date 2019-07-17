@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import CardSystemItem from './_MainSlider/CardSystemItem';
+import ControlSlider from '../../other/ControlSlider';
 import React from 'react';
 
 export default function MainSlider({ systemsList = [], changeIndexSystem }) {
@@ -74,22 +75,7 @@ export default function MainSlider({ systemsList = [], changeIndexSystem }) {
           <div className="slider__navigation">
             <span>Элементы умного дома</span>
             <div className="controls">
-              <button
-                onClick={() => {
-                  eventMove('-');
-                }}
-                aria-label="Навигация влево"
-              >
-                <img src="/static/icons/_arrows/arrow-left-white.svg" alt="Иконка стрелка влево" />
-              </button>
-              <button
-                onClick={() => {
-                  eventMove('+');
-                }}
-                aria-label="Навигация вправо"
-              >
-                <img src="/static/icons/_arrows/arrow-right-white.svg" alt="Иконка стрелка вправо" />
-              </button>
+              <ControlSlider onLeft={eventMove} onRight={eventMove} color={'white'} size={32}></ControlSlider>
             </div>
           </div>
           <div className="slider__body">
@@ -196,12 +182,6 @@ export default function MainSlider({ systemsList = [], changeIndexSystem }) {
           height: 26px;
           margin-left: 20px;
           margin-bottom: 5px;
-        }
-        .slider__navigation .controls button {
-          width: 32px;
-        }
-        .slider__navigation .controls button + button {
-          margin-left: 10px;
         }
         .slider__body {
           width: calc(100% + 100px);

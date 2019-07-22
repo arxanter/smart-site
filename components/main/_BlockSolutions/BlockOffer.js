@@ -13,8 +13,20 @@ export default function BlockOffer({ offer }) {
           <p>{offer.brands}</p>
           <h5>Системы</h5>
           <p>{offer.systems}</p>
-          <h5>Описание</h5>
-          <p>{offer.info}</p>
+          <h5>Особенности</h5>
+          {Array.isArray(offer.info) ? (
+            <ul>
+              {offer.info.map((el, index) => {
+                return (
+                  <li className="list-item block-info__list-item" key={index}>
+                    <p>{el}</p>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <p>{offer.info}</p>
+          )}
         </div>
       </article>
       <style jsx>{`
@@ -25,6 +37,13 @@ export default function BlockOffer({ offer }) {
         }
         .block-info {
           padding: 20px 0;
+        }
+        .block-info__list-item {
+          font-weight: normal;
+          font-family: 'Open sans', Helvetica;
+        }
+        .block-info__list-item:before {
+          top: 50%;
         }
         @media (max-width: 1000px) {
         }

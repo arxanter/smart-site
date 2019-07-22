@@ -1,11 +1,22 @@
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { useState } from 'react';
+import Slider from 'react-slick';
 import ControlSlider from '../../other/ControlSlider';
 export default function ArticleElement({ article, img, imgGalery }) {
-  const [indexSliderImage, setIndexSliderImage] = useState(0);
+  const sliderSettings = {
+    arrows: false,
+    dots: false,
+    infinity: true,
+    autoplay: true,
+    adaptiveHeight: true,
+    lazyLoad: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+  const refLink = React.createRef();
   function sliderEvent(direction) {
-    if (direction === '+') setIndexSliderImage(indexSliderImage + 1 < imgGalery.length ? indexSliderImage + 1 : 0);
-    if (direction === '-') setIndexSliderImage(indexSliderImage - 1 >= 0 ? indexSliderImage - 1 : imgGalery.length - 1);
+    if (direction === '+') refLink.current.slickNext();
+    if (direction === '-') refLink.current.slickPrev();
   }
   return (
     <>
@@ -15,17 +26,25 @@ export default function ArticleElement({ article, img, imgGalery }) {
             <ReactMarkdown source={article} />
           </section>
           <div className="content__block-action">
-            <button className="btn-secondary-black">Получить консультацию</button>
+            <button className="btn-secondary--black">Получить консультацию</button>
           </div>
         </div>
         <aside>
           <div className="content__main-image">
             <img src={`/static/img/${img.src}`} alt={img.alt} />
           </div>
-          <div className="content__slider">
+          <div className="slider">
             <ControlSlider onLeft={sliderEvent} onRight={sliderEvent} color={'black'} size={32}>
-              <div className="content__slider__image">
-                <img src={`/static/img/${imgGalery[indexSliderImage].src}`} alt={imgGalery[indexSliderImage].alt} />
+              <div className="slider__content">
+                <Slider {...sliderSettings} ref={refLink}>
+                  {imgGalery.map((el, index) => {
+                    return (
+                      <div className="slider__item" key={index}>
+                        <img src={`/static/img/${el.src}`} alt={el.alt} className="slider__image" />
+                      </div>
+                    );
+                  })}
+                </Slider>
               </div>
             </ControlSlider>
           </div>
@@ -88,10 +107,7 @@ export default function ArticleElement({ article, img, imgGalery }) {
           right: -20px;
           width: 85%;
         }
-        .content__main-image img {
-          object-fit: cover;
-        }
-        .content__slider {
+        .slider {
           position: absolute;
           bottom: 60px;
           display: flex;
@@ -101,15 +117,13 @@ export default function ArticleElement({ article, img, imgGalery }) {
           justify-content: center;
           align-items: center;
         }
-        .content__slider__image {
-          width: calc(100% - 40px);
-          height: 180px;
+        .slider__content {
+          width: calc(100% - 120px);
           margin: 0 5px;
           border: 10px solid var(--light-vis-color);
         }
-        .content__slider__image img {
+        .slider__image {
           object-fit: cover;
-          transition: 0.2s ease-out;
         }
       `}</style>
     </>

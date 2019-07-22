@@ -96,6 +96,9 @@ export default function BlockPortfolio() {
           background-color: var(--dark-semi-vis-color);
           text-align: center;
         }
+        .portfolio__item__overlay h4 {
+          color: var(--light-color);
+        }
         .portfolio__item:hover {
           box-shadow: -6px 6px 0 0px var(--main-color);
           transform: translate(7px, -7px);

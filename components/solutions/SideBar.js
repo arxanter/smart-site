@@ -9,14 +9,16 @@ export default function SideBar({ offers, typeOffers, activeOffer = {}, onChange
   return (
     <>
       <aside>
-        <h5>Проекты решений</h5>
+        <h5>Шаблоны решений</h5>
         <nav>
           <ul className="offers-type-list">
             {typeOffers.map((type, index) => {
               return (
                 <li key={index}>
                   <button
-                    className={`${type.name == activeType.name ? 'btn-primary' : 'btn-secondary-black'} offer-type-btn`}
+                    className={`${
+                      type.name == activeType.name ? 'btn-primary' : 'btn-secondary--black'
+                    } offer-type-btn`}
                     onClick={() => {
                       changeActiveType(type);
                     }}
@@ -90,7 +92,7 @@ export default function SideBar({ offers, typeOffers, activeOffer = {}, onChange
         .offer-type-btn.btn-primary {
           width: 230px;
         }
-        .offer-type-btn.btn-secondary-black {
+        .offer-type-btn.btn-secondary--black {
           width: 160px;
         }
       `}</style>

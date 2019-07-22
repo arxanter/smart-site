@@ -120,7 +120,7 @@ button {
 }
 .btn-primary,
 .btn-secondary,
-.btn-secondary-black {
+.btn-secondary--black {
   display: inline-block;
   height: 2.2em;
   font-size: 14px;
@@ -140,13 +140,13 @@ button {
   border: 1px solid var(--light-color);
   color: var(--light-color);
 }
-.btn-secondary-black {
+.btn-secondary--black {
   background-color: transparent;
   border: 1px solid var(--dark-color);
   color: var(--dark-color);
 }
 .btn-secondary:hover,
-.btn-secondary-black:hover {
+.btn-secondary--black:hover {
   background-color: var(--main-color);
   border: 1px solid var(--main-color);
   color: var(--light-color);
@@ -251,7 +251,7 @@ li.list-item::before {
   }
   .btn-primary,
   .btn-secondary,
-  .btn-secondary-black {
+  .btn-secondary--black {
     font-size: 12px;
     padding: 0 15px;
     border-radius: 26px;

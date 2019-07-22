@@ -54,7 +54,7 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
               {typeOffers.map((item, index) => (
                 <li className="nav-item" key={index}>
                   <button
-                    className={activeType == item.type ? 'btn-primary' : 'btn-secondary-black'}
+                    className={activeType == item.type ? 'btn-primary' : 'btn-secondary--black'}
                     onClick={() => {
                       setActiveType(item.type);
                     }}
@@ -119,8 +119,8 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
           justify-content: space-around;
         }
         .container .img-offer {
-          max-width: 450px;
-          width: 30%;
+          max-width: 800px;
+          width: 50%;
           padding: 20px 0;
         }
         nav ul {

@@ -76,7 +76,7 @@ export default function BlockPoints() {
           max-width: 300px;
         }
         .point__name {
-          height: 2.2em;
+          height: 1em;
         }
         @media (max-width: 1000px) {
           .point__name {

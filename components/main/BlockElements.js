@@ -42,14 +42,13 @@ export default function BlockElements({ systemsList = [], indexSystem, systemsDa
         }
         .elements__container {
           display: flex;
-          padding: 60px 10px;
+          padding: 10px;
           margin: auto;
           max-width: 1200px;
-          height: 600px;
           color: var(--dark-color);
         }
         .elements__container aside {
-          width: 220px;
+          width: 300px;
           display: flex;
           flex-direction: column;
           flex-shrink: 0;

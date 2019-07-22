@@ -42,7 +42,7 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
       <section className="block__solutions">
         <div className="header">
           <h2>
-            Проекты <mark className="mark-underline">решений</mark>
+            Шаблоны <mark className="mark-underline">решений</mark>
           </h2>
           <a className="link-offers" href="">
             Все решения

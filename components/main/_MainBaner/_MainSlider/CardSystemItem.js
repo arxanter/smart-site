@@ -1,3 +1,5 @@
+import { Link as ScrollLink } from 'react-scroll';
+
 export default function CardSystemItem(props) {
   const fullIconAlias = `/static/icons/_elements/${props.item.iconAlias}`;
   return (
@@ -17,9 +19,9 @@ export default function CardSystemItem(props) {
             />
           </div>
           <div className="card__button">
-            <a className=" btn-secondary" href="#elements" onClick={props.onChange}>
+            <ScrollLink className=" btn-secondary" to="elements" smooth={true} offset={-60} onClick={props.onChange}>
               Подробнее
-            </a>
+            </ScrollLink>
           </div>
           <div className="card__overlay" />
         </div>

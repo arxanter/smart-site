@@ -11,7 +11,7 @@ const menuItmes = [
     link: '/solutions',
   },
   {
-    name: 'Портфолио',
+    name: 'Объекты',
     link: '/portfolio',
   },
   {
@@ -70,18 +70,23 @@ export default function MenuComponent({ activeName }) {
         {`
           @keyframes slidein {
             from {
-              width: 0;
+              background-size: 0 100%;
             }
 
             to {
-              width: 100%;
+              background-size: 100% 100%;
             }
           }
           .nav-wrapper {
+            position: fixed;
+            width: 100%;
+            box-sizing: border-box;
             height: 60px;
             background-color: var(--dark-color);
+            box-shadow: 5px 0 10px 5px var(--dark-color);
             padding: 0 10px;
             text-align: center;
+            z-index: 99;
           }
           .nav {
             display: flex;
@@ -99,16 +104,14 @@ export default function MenuComponent({ activeName }) {
           nav li {
             cursor: pointer;
             padding: 2px;
+            margin: 0 30px;
             position: relative;
           }
-          nav li:hover:before {
-            content: '';
-            position: absolute;
-            border-bottom: 2px solid var(--main-color);
-            bottom: 0;
-            left: 0;
-            animation-duration: 1.5s;
-            animation-name: slidein;
+          nav li:hover:not(.active) {
+            background: linear-gradient(180deg, transparent 50%, var(--main-color) 0);
+            background-repeat: no-repeat;
+            background-position: bottom left;
+            animation: slidein 1s;
           }
           nav li.active {
             background: linear-gradient(180deg, transparent 50%, var(--main-color) 0);

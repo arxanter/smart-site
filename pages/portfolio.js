@@ -10,7 +10,7 @@ export default function PortfolioPage({ portfolio }) {
   const [activeObject, setActiveObject] = useState(portfolio[0]);
   return (
     <>
-      <Menu activeName={'Портфолио'}></Menu>
+      <Menu activeName={'Объекты'}></Menu>
       <ProtfolioMainBlock
         activeObject={activeObject}
         onChange={setActiveObject}

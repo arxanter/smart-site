@@ -1,6 +1,9 @@
 import Menu from '../components/mainMenu';
 import MainFooter from '../components/MainFooter';
-
+import dynamic from 'next/dynamic';
+const YaMaps = dynamic(import('../components/other/YaMaps'), {
+  ssr: false,
+});
 export default function contact() {
   return (
     <>
@@ -35,9 +38,10 @@ export default function contact() {
           </h2>
           <script
             type="text/javascript"
-            charset="utf-8"
-            async
+            charSet="utf-8"
             src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A77P0sJeZxZnjD5eeoQoTMUs_Uw8o2m37&amp;width=100%25&amp;height=450&amp;lang=ru_RU&amp;scroll=true"
+            async
+            defer
           ></script>
         </main>
         <MainFooter></MainFooter>

@@ -42,17 +42,19 @@ export default function BlockMarketing() {
           font-size: 36px;
           line-height: 1.2em;
           max-width: 420px;
+          color: var(--light-color);
         }
         @media (max-width: 650px) {
+          .block-marketing__desc {
+            padding-left: 20px;
+          }
           .block-marketing__desc span {
             font-size: 18px;
           }
           .block-marketing__desc h3 {
             font-size: 18px;
           }
-          .block-marketing__desc {
-            padding-left: 20px;
-          }
+
           .block-marketing__img {
             width: 30%;
           }

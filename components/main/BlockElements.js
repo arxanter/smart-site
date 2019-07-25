@@ -1,6 +1,12 @@
 import ArticleElement from './_BlockElements/ArticleElement';
 
-export default function BlockElements({ systemsList = [], indexSystem, systemsData = [], changeIndexSystem }) {
+export default function BlockElements({
+  systemsList = [],
+  indexSystem,
+  systemsData = [],
+  changeIndexSystem,
+  modalCall,
+}) {
   return (
     <>
       <div id="elements">
@@ -30,7 +36,7 @@ export default function BlockElements({ systemsList = [], indexSystem, systemsDa
           <div className="elements__slider">
             <div>
               {systemsData.map((item, index) => (
-                <ArticleElement {...item} key={index} />
+                <ArticleElement {...item} key={index} modalCall={modalCall} />
               ))}
             </div>
           </div>

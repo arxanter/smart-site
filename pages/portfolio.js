@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import fetch from 'isomorphic-unfetch';
+import api from '../components/other/api';
+
 import Menu from '../components/mainMenu';
 import MainFooter from '../components/MainFooter';
 import ProtfolioMainBlock from '../components/portfolio/ProtfolioMainBlock';
@@ -25,9 +26,6 @@ export default function PortfolioPage({ portfolio }) {
 }
 
 PortfolioPage.getInitialProps = async () => {
-  let baseURL = process ? process.env.HOST || '' : '';
-  baseURL += '/api/v1/';
-  const res = await fetch(baseURL + 'portfolio');
-  const portfolio = await res.json();
+  const portfolio = await api.getPortfolio();
   return { portfolio };
 };

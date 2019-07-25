@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import React from 'react';
-import fetch from 'isomorphic-unfetch';
-
-const baseURL = '/api/v1/';
-
+import api from '../other/api';
+import { toast } from 'react-toastify';
 export default function BlockContactForm() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -11,48 +9,42 @@ export default function BlockContactForm() {
   const [message, setMessage] = useState('');
   let timerFormErr = null;
   const formError = React.createRef();
-  function sendForm() {
-    let isError = false;
+
+  async function sendForm() {
+    const data = {
+      name,
+      phone,
+      email,
+      message,
+    };
+    const scheme = {
+      name: 'string',
+      phone: 'phone',
+      email: 'email',
+      message: 'string',
+    };
+    const isError = api.validForm(data, scheme);
     if (timerFormErr) {
       clearTimeout(timerFormErr);
       timerFormErr = null;
     }
-    const mailRegexp = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    const phoneRegexp = /^[0-9+()\ ]+$/; // eslint-disable-line
-    if (!name) isError = true;
-    if (!phoneRegexp.test(phone)) isError = true;
-    if (!mailRegexp.test(email)) isError = true;
     if (isError && formError.current) {
       formError.current.style.visibility = 'visible';
       timerFormErr = setTimeout(() => {
-        formError.current.style.visibility = 'hidden';
+        if (formError.current) formError.current.style.visibility = 'hidden';
       }, 2000);
     } else {
-      const data = {
-        name,
-        phone,
-        email,
-        message,
-      };
-      fetch(baseURL + 'sendForm', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-        .then(res => {
-          if (res.status >= 400) {
-            console.log('Bad response from server');
-          } else return res.json();
-        })
-        .then(data => {
-          console.log(data);
-          setName('');
-          setEmail('');
-          setPhone('');
-          setMessage('');
-        });
+      const res = await api.sendForm(data, 'call');
+
+      if (!res.err) {
+        toast.success('Форма успешно отправлена');
+      } else {
+        toast.error('Не удалось отправить форму');
+      }
+      setName('');
+      setEmail('');
+      setPhone('');
+      setMessage('');
     }
   }
   return (
@@ -90,7 +82,7 @@ export default function BlockContactForm() {
           </div>
           <form className="contact-form" name="contact-form">
             <div className="container">
-              <label>
+              <label className="form-item">
                 <span>Ваше имя</span>
                 <input
                   type="text"
@@ -100,7 +92,7 @@ export default function BlockContactForm() {
                   }}
                 />
               </label>
-              <label>
+              <label className="form-item">
                 <span>Телефон</span>
                 <input
                   type="tel"
@@ -110,7 +102,7 @@ export default function BlockContactForm() {
                   }}
                 />
               </label>
-              <label>
+              <label className="form-item">
                 <span>Электронный адрес</span>
                 <input
                   type="email"
@@ -121,7 +113,7 @@ export default function BlockContactForm() {
                 />
               </label>
             </div>
-            <label>
+            <label className="form-item">
               <span>Сообщение</span>
               <textarea
                 type="text"
@@ -136,6 +128,13 @@ export default function BlockContactForm() {
             Не верно заданы поля формы
           </span>
           <div className="contact-form__action">
+            <span className="contact-form__privacy">
+              Нажимая кнопку «Заказать проект» вы принимаете условия
+              <a href="/privacy_policy.pdf" target="_blank">
+                {' '}
+                политики о конфиденциальности
+              </a>
+            </span>
             <button className="btn-secondary" onClick={sendForm}>
               Заказать проект
             </button>
@@ -198,43 +197,24 @@ export default function BlockContactForm() {
           margin: auto;
           padding: 0 10px;
         }
-        .contact-form .container {
-          padding-right: 20px;
-        }
-        .contact-form input,
-        .contact-form textarea {
-          border-radius: 5px;
-          border-style: none;
-          outline: none;
-          line-height: 1.5em;
-          font-size: 18px;
-          padding: 5px 10px;
-        }
-        .contact-form input {
-          height: 25px;
-        }
-        .contact-form textarea {
-          height: 100%;
-          resize: none;
-        }
-        .contact-form label {
-          display: flex;
-          flex-direction: column;
-          margin: 15px 5px;
-          text-align: left;
-        }
-        .contact-form label span {
-          font-size: 14px;
-          margin-bottom: 5px;
-          margin-left: 5px;
-        }
         .contact-form > * {
           width: 50%;
           max-width: 350px;
         }
+        .contact-form .container {
+          padding-right: 20px;
+        }
         .contact-form__error {
           visibility: hidden;
           color: var(--main-color);
+        }
+        .contact-form__privacy,
+        .contact-form__privacy a {
+          display: block;
+          padding-bottom: 10px;
+          font-size: 12px;
+          max-width: 400px;
+          margin: 0 auto;
         }
         .contact-form__action {
           padding: 20px;

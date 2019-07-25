@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import fetch from 'isomorphic-unfetch';
+import Modali, { useModali } from 'modali/dist/index';
+import settingsModalCall from '../static/config/modal.config';
+import api from '../components/other/api';
 // Components
 import Menu from '../components/mainMenu';
 import MainBaner from '../components/main/MainBaner';
@@ -10,19 +12,28 @@ import BlockSolutions from '../components/main/BlockSolutions';
 import BlockMarketing from '../components/main/BlockMarketing';
 import BlockPortfolio from '../components/main/BlockPortfolio';
 import BlockContactForm from '../components/main/BlockContactForm';
+import ModalCall from '../components/other/ModalCall';
 
 export default function Index(props) {
   const [indexSystem, changeIndexSystem] = useState(0);
+  const [modalCall, toggleModalCall] = useModali(settingsModalCall);
+
   return (
     <>
       <Menu activeName={'Главная'} />
       <main>
-        <MainBaner indexSystem={indexSystem} changeIndexSystem={changeIndexSystem} systemsList={props.systemsList} />
+        <MainBaner
+          indexSystem={indexSystem}
+          changeIndexSystem={changeIndexSystem}
+          systemsList={props.systemsList}
+          modalCall={toggleModalCall}
+        />
         <BlockElements
           indexSystem={indexSystem}
           changeIndexSystem={changeIndexSystem}
           systemsList={props.systemsList}
           systemsData={props.systemsData}
+          modalCall={toggleModalCall}
         />
         <BlockPoints />
         <BlockSolutions offers={props.offers} typeOffers={props.typeOffers} />
@@ -31,22 +42,17 @@ export default function Index(props) {
         <BlockContactForm />
       </main>
       <MainFooter />
+      <Modali.Modal {...modalCall}>
+        <ModalCall toggle={toggleModalCall}> </ModalCall>
+      </Modali.Modal>
     </>
   );
 }
 
 Index.getInitialProps = async () => {
-  let baseURL = process ? process.env.HOST || '' : '';
-  baseURL += '/api/v1/';
-
   try {
-    const promises = [];
-    promises.push(fetch(baseURL + 'systemsList'));
-    promises.push(fetch(baseURL + 'offers'));
-
-    const [systemsRes, offersRes] = await Promise.all(promises);
-    const systemsList = await systemsRes.json();
-    const { offers, types: typeOffers } = await offersRes.json();
+    const systemsList = await api.getSystemsList();
+    const { offers, typeOffers } = await api.getOffers();
     const systemsData = systemsList.map(item => {
       return {
         name: item.name,
@@ -56,13 +62,11 @@ Index.getInitialProps = async () => {
     });
     const promiseArticles = systemsList.map(item => {
       return new Promise(resolve => {
-        fetch(baseURL + `systemArticle/${item.article}`)
-          .then(res => res.text())
-          .then(data => {
-            const findedElement = systemsData.find(el => el.name === item.name);
-            if (findedElement) findedElement.article = data;
-            resolve();
-          });
+        api.getArticle(item.article).then(data => {
+          const findedElement = systemsData.find(el => el.name === item.name);
+          if (findedElement) findedElement.article = data;
+          resolve();
+        });
       });
     });
     await Promise.all(promiseArticles);

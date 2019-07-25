@@ -1,6 +1,10 @@
 import { slide as Menu } from 'react-burger-menu';
 import Link from 'next/link';
-import '../css/burgerMenu.css';
+import Modali, { useModali } from 'modali/dist/index';
+import ModalCall from '../components/other/ModalCall';
+import settingsModalCall from '../static/config/modal.config';
+
+import '../static/css/burgerMenu.css';
 const menuItmes = [
   {
     name: 'Главная',
@@ -21,6 +25,7 @@ const menuItmes = [
 ];
 
 export default function MenuComponent({ activeName }) {
+  const [modalCall, toggleModalCall] = useModali(settingsModalCall);
   return (
     <>
       <div className="nav-wrapper">
@@ -44,9 +49,9 @@ export default function MenuComponent({ activeName }) {
               </div>
               <span>+ 7 (495) 645 08 72</span>
             </a>
-            <a className="btn-primary" href="#contact-form">
+            <button className="btn-primary" onClick={toggleModalCall}>
               Заказать звонок
-            </a>
+            </button>
           </div>
           <div className="burger-menu">
             <Menu bodyClassName={'nav'} width={'200px'} right>
@@ -65,6 +70,9 @@ export default function MenuComponent({ activeName }) {
             </Menu>
           </div>
         </nav>
+        <Modali.Modal {...modalCall}>
+          <ModalCall toggle={toggleModalCall}> </ModalCall>
+        </Modali.Modal>
       </div>
       <style jsx>
         {`
@@ -78,12 +86,13 @@ export default function MenuComponent({ activeName }) {
             }
           }
           .nav-wrapper {
-            position: fixed;
+            position: sticky;
+            top: 0;
             width: 100%;
             box-sizing: border-box;
             height: 60px;
             background-color: var(--dark-color);
-            box-shadow: 5px 0 10px 5px var(--dark-color);
+            box-shadow: 2px 0 5px 2px var(--dark-color);
             padding: 0 10px;
             text-align: center;
             z-index: 99;
@@ -155,7 +164,7 @@ export default function MenuComponent({ activeName }) {
             display: none;
           }
           @media (max-width: 1000px) {
-            .nav__contact a {
+            .nav__contact button {
               display: none;
             }
             .nav li,

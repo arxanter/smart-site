@@ -1,20 +1,13 @@
-import '../css/index.css';
+import 'modali/dist/modali.css';
+import '../static/css/index.css';
 
 import React from 'react';
 import App, { Container } from 'next/app';
 import Head from 'next/head';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure({ autoClose: 2000 });
 class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    return { pageProps };
-  }
-
   render() {
     const { Component, pageProps } = this.props;
 

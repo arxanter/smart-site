@@ -15,7 +15,7 @@ const MainBaner = props => {
               Системы <mark>Умного дома</mark>
             </h1>
             <p>Монтаж и проектирование систем Автоматизации частных домов и коммерческой недвижимости</p>
-            <a className="btn-secondary" href="#contact-form">Заказать проект</a>
+            <button className="btn-secondary" onClick={props.modalCall}>Заказать проект</button>
           </section>
           <MainSlider {...props} />
         </div>
@@ -71,7 +71,7 @@ const MainBaner = props => {
           margin-top: 20px;
           max-width: 480px;
         }
-        .main-banner__content a {
+        .main-banner__content button {
           position: relative;
           bottom: -5em;
         }
@@ -79,7 +79,7 @@ const MainBaner = props => {
           .main-banner__content p {
             font-size: 14px;
           }
-          .main-banner__content a {
+          .main-banner__content button {
             bottom: -5.8em;
           }
           .main-banner__content::before,

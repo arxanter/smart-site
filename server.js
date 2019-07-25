@@ -95,6 +95,9 @@ app
       const data = await readFile('./static/robots.txt', 'utf8');
       res.send(data);
     });
+    server.get('/privacy_policy.pdf', async (req, res) => {
+      res.sendFile(__dirname + '/static/privacy_policy.pdf');
+    });
     server.get('/sitemap.xml', async (req, res) => {
       res.status(404).send({ status: 200 });
     });

@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import fetch from 'isomorphic-unfetch';
+import api from '../components/other/api';
+
+
 import Menu from '../components/mainMenu';
 import MainFooter from '../components/MainFooter';
 import SideBar from '../components/solutions/SideBar';
@@ -91,9 +93,6 @@ export default function SolutionsPage({ offers, typeOffers }) {
 }
 
 SolutionsPage.getInitialProps = async () => {
-  let baseURL = process ? process.env.HOST || '' : '';
-  baseURL += '/api/v1/';
-  const res = await fetch(baseURL + 'offers');
-  const { offers, types: typeOffers } = await res.json();
+  const { offers, typeOffers } = await api.getOffers();
   return { offers, typeOffers };
 };

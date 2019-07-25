@@ -2,13 +2,12 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Slider from 'react-slick';
 import ControlSlider from '../../other/ControlSlider';
-export default function ArticleElement({ article, img, imgGalery }) {
+export default function ArticleElement({ article, img, imgGalery, modalCall }) {
   const sliderSettings = {
     arrows: false,
     dots: false,
     infinity: true,
     autoplay: true,
-    adaptiveHeight: true,
     lazyLoad: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -26,7 +25,14 @@ export default function ArticleElement({ article, img, imgGalery }) {
             <ReactMarkdown source={article} />
           </section>
           <div className="content__block-action">
-            <button className="btn-secondary--black">Получить консультацию</button>
+            <button
+              className="btn-secondary--black"
+              onClick={() => {
+                modalCall();
+              }}
+            >
+              Получить консультацию
+            </button>
           </div>
         </div>
         <aside>
@@ -119,11 +125,13 @@ export default function ArticleElement({ article, img, imgGalery }) {
         }
         .slider__content {
           width: calc(100% - 120px);
-          margin: 0 5px;
+          height: 180px;
+          margin: 0 10px;
           border: 10px solid var(--light-vis-color);
         }
         .slider__image {
           object-fit: cover;
+          height: 180px;
         }
       `}</style>
     </>

@@ -7,7 +7,7 @@ export default function BlockMarketing() {
           <div className="block-marketing__desc">
             <span>при заказе до 20 июля</span>
             <h3>Голосовое управление в подарок</h3>
-            <button className="btn-secondary">Еще предложения</button>
+            {/* <button className="btn-secondary">Еще предложения</button> */}
           </div>
         </div>
       </section>

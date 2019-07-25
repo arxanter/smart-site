@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import BlockOffer from './_BlockSolutions/BlockOffer';
 import ControlSlider from '../other/ControlSlider';
-
+import Link from 'next/link';
 export default function BlockSolutions({ typeOffers = [], offers }) {
   const [activeType, setActiveType] = useState(typeOffers[0].type);
   const [activeOffer, setActiveOffer] = useState({});
@@ -44,9 +44,9 @@ export default function BlockSolutions({ typeOffers = [], offers }) {
           <h2>
             Шаблоны <mark className="mark-underline">решений</mark>
           </h2>
-          <a className="link-offers" href="">
-            Все решения
-          </a>
+          <Link href="/solutions">
+            <a className="link-offers">Все решения</a>
+          </Link>
         </div>
         <div>
           <nav>

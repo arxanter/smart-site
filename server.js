@@ -101,9 +101,12 @@ app
     server.get('/sitemap.xml', async (req, res) => {
       res.status(404).send({ status: 200 });
     });
+
+    /**Root */
     server.get('*', (req, res) => {
       return handle(req, res);
     });
+    /**Root END */
 
     server.listen(5000, err => {
       if (err) throw err;

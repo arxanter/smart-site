@@ -1,5 +1,8 @@
 {
   "name": "Вадим Дегтярев",
+  "header": "Вадим Дегтярев",
+  "desc": "Описание",
+  "uid": "b2a50fd7-7b1d-4843-a07a-2c559249fe29",
   "square": "180",
   "leadTime": "100",
   "imgPreview": { "src": "preview/portfolio_1.jpg", "alt": "Гостиная" },

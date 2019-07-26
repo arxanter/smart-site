@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import api from '../components/other/api';
-
 
 import Menu from '../components/mainMenu';
 import MainFooter from '../components/MainFooter';
@@ -9,7 +9,16 @@ import OfferPreview from '../components/solutions/OfferPreview';
 import DescSystems from '../components/other/DescSystems';
 
 export default function SolutionsPage({ offers, typeOffers }) {
-  const [activeOffer, setActiveOffer] = useState(offers.filter(offer => offer.type === typeOffers[0].type)[0]);
+  const router = useRouter();
+  const { name } = router.query;
+  const [activeOffer, setActiveOffer] = useState();
+  useEffect(() => {
+    if (name) {
+      setActiveOffer(offers.find(el => el.name === name));
+    } else {
+      setActiveOffer(offers.filter(el => el.type === typeOffers[0].type)[0]);
+    }
+  }, []);
   return (
     <>
       <Menu activeName={'Шаблоны решений'}></Menu>

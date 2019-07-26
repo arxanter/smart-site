@@ -1,4 +1,5 @@
 import BlockCounts from '../../other/BlockCounts';
+import Link from 'next/link';
 export default function BlockOffer({ offer }) {
   return (
     <>
@@ -28,8 +29,15 @@ export default function BlockOffer({ offer }) {
             <p>{offer.info}</p>
           )}
         </div>
+        <Link href={`/solutions?name=${offer.name}`}>
+          <a className="btn-primary article__btn">Подробнее</a>
+        </Link>
       </article>
       <style jsx>{`
+        article {
+          display: flex;
+          flex-direction: column;
+        }
         span,
         h5,
         p {
@@ -44,6 +52,14 @@ export default function BlockOffer({ offer }) {
         }
         .block-info__list-item:before {
           top: 50%;
+        }
+        .article__btn {
+          margin: auto;
+          width: 250px;
+          text-align: center;
+          height: 32px;
+          line-height: 30px;
+          font-size: 16px;
         }
         @media (max-width: 1000px) {
         }

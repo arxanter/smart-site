@@ -1,10 +1,13 @@
+
 import Menu from '../components/mainMenu';
 import MainFooter from '../components/MainFooter';
 import dynamic from 'next/dynamic';
-const YaMaps = dynamic(import('../components/other/YaMaps'), {
+// import YMap from '../components/other/YaMap'
+const YaMap = dynamic(import('../components/other/YaMap'), {
   ssr: false,
 });
 export default function contact() {
+
   return (
     <>
       <div className="container">
@@ -36,19 +39,13 @@ export default function contact() {
           <h2>
             Мы на <mark className="mark-underline">карте</mark>
           </h2>
-          <script
-            type="text/javascript"
-            charSet="utf-8"
-            src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A77P0sJeZxZnjD5eeoQoTMUs_Uw8o2m37&amp;width=100%25&amp;height=450&amp;lang=ru_RU&amp;scroll=true"
-            async
-            defer
-          ></script>
+          <YaMap></YaMap>
         </main>
         <MainFooter></MainFooter>
       </div>
       <style jsx>{`
         main {
-          min-height: calc(100vh - 160px);
+          min-height: calc(100vh - 50px);
         }
 
         .contact__info {

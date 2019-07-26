@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Частный дом №2',
+  uid: 'd92764ce-e352-4a9d-a7c9-1572ce528010',
   subName: 'Вадим',
   square: 180,
   price: '1 460 000',

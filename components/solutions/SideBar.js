@@ -1,11 +1,18 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
+import Router from 'next/router';
 
-export default function SideBar({ offers, typeOffers, activeOffer = {}, onChangeOffer }) {
-  const [activeType, setActiveType] = useState(typeOffers[0]);
+function SideBar({ offers, typeOffers, activeOffer = {}, onChangeOffer }) {
   const changeActiveType = type => {
-    setActiveType(type);
-    onChangeOffer(offers.filter(el => el.type === type.type)[0]);
+    const newActiveOffer = offers.filter(el => el.type === type.type)[0];
+    onChangeOffer(newActiveOffer);
   };
+  useEffect(() => {
+    if (activeOffer) {
+      const href = `/solutions?name=${activeOffer.name}`;
+      Router.replace(href, href, { shallow: true });
+    }
+  }, [activeOffer]);
+
   return (
     <>
       <aside>
@@ -17,7 +24,7 @@ export default function SideBar({ offers, typeOffers, activeOffer = {}, onChange
                 <li key={index}>
                   <button
                     className={`${
-                      type.name == activeType.name ? 'btn-primary' : 'btn-secondary--black'
+                      type.type === activeOffer.type ? 'btn-primary' : 'btn-secondary--black'
                     } offer-type-btn`}
                     onClick={() => {
                       changeActiveType(type);
@@ -26,7 +33,7 @@ export default function SideBar({ offers, typeOffers, activeOffer = {}, onChange
                     {type.name}
                   </button>
                   <ul className="offers-list">
-                    {type.name == activeType.name
+                    {type.type == activeOffer.type
                       ? offers
                           .filter(el => el.type === type.type)
                           .map(offer => {
@@ -99,3 +106,5 @@ export default function SideBar({ offers, typeOffers, activeOffer = {}, onChange
     </>
   );
 }
+
+export default SideBar;

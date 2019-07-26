@@ -1,42 +1,15 @@
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import api from '../other/api';
+
 export default function BlockPortfolio() {
-  const portfolioArray = [
-    {
-      header: 'Объект 1',
-      desc: 'Удобная квартира в Москве',
-      src: 'preview/portfolio_1.jpg',
-      alt: '',
-    },
-    {
-      header: 'Объект 2',
-      desc: 'Удобная квартира в Москве',
-      src: 'preview/portfolio_2.jpg',
-      alt: '',
-    },
-    {
-      header: 'Объект 3',
-      desc: 'Удобная квартира в Москве',
-      src: 'preview/portfolio_3.jpg',
-      alt: '',
-    },
-    {
-      header: 'Объект 4',
-      desc: 'Удобная квартира в Москве',
-      src: 'preview/portfolio_4.jpg',
-      alt: '',
-    },
-    {
-      header: 'Объект 5',
-      desc: 'Удобная квартира в Москве',
-      src: 'preview/portfolio_5.jpg',
-      alt: '',
-    },
-    {
-      header: 'Объект 6',
-      desc: 'Удобная квартира в Москве',
-      src: 'preview/portfolio_6.jpg',
-      alt: '',
-    },
-  ];
+  const [portfolio, setPortfolio] = useState([]);
+  useEffect(() => {
+    api.getPortfolio().then(data => {
+      setPortfolio(data);
+    });
+  }, []);
+
   return (
     <>
       <section className="block-porfolio">
@@ -44,15 +17,21 @@ export default function BlockPortfolio() {
           Наши <mark className="mark-underline">работы</mark>
         </h2>
         <div className="portfolio__items">
-          {portfolioArray.map((el, index) => {
+          {portfolio.map((el, index) => {
             return (
-              <a href="#" className="portfolio__item" key={index}>
-                <img src={`/static/img/_portfolio/${el.src}`} alt={el.alt} className="portfolio__item__img" />
-                <div className="portfolio__item__overlay">
-                  <h4>{el.header}</h4>
-                  <span>{el.desc}</span>
-                </div>
-              </a>
+              <Link href={`/portfolio?name=${el.name}`} key={index}>
+                <a href="#" className="portfolio__item">
+                  <img
+                    src={`/static/img/_portfolio/${el.imgPreview.src}`}
+                    alt={el.imgPreview.alt}
+                    className="portfolio__item__img"
+                  />
+                  <div className="portfolio__item__overlay">
+                    <h4>{el.header}</h4>
+                    <span>{el.desc}</span>
+                  </div>
+                </a>
+              </Link>
             );
           })}
         </div>

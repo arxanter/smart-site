@@ -1,13 +1,8 @@
-
 import Menu from '../components/mainMenu';
 import MainFooter from '../components/MainFooter';
-import dynamic from 'next/dynamic';
-// import YMap from '../components/other/YaMap'
-const YaMap = dynamic(import('../components/other/YaMap'), {
-  ssr: false,
-});
-export default function contact() {
+import YaMap from '../components/other/YaMap';
 
+export default function contact() {
   return (
     <>
       <div className="container">

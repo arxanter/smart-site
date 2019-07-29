@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Modali, { useModali } from 'modali/dist/index';
+import settingsModalCall from '../static/config/modal.config';
 import api from '../components/other/api';
 
 import Menu from '../components/mainMenu';
@@ -7,8 +9,10 @@ import MainFooter from '../components/MainFooter';
 import SideBar from '../components/solutions/SideBar';
 import OfferPreview from '../components/solutions/OfferPreview';
 import DescSystems from '../components/other/DescSystems';
+import ModalCall from '../components/other/ModalCall';
 
 export default function SolutionsPage({ offers, typeOffers }) {
+  const [modalCall, toggleModalCall] = useModali(settingsModalCall);
   const router = useRouter();
   const { name } = router.query;
   const [activeOffer, setActiveOffer] = useState();
@@ -40,10 +44,15 @@ export default function SolutionsPage({ offers, typeOffers }) {
               стоимость решения <span className="block-cost">{activeOffer ? activeOffer.price : ''} руб</span>
             </span>
           </div>
-          <button className="btn-secondary">Заказать расчет</button>
+          <button className="btn-secondary" onClick={toggleModalCall}>
+            Заказать расчет
+          </button>
         </div>
       </section>
       <MainFooter></MainFooter>
+      <Modali.Modal {...modalCall}>
+        <ModalCall toggle={toggleModalCall}> </ModalCall>
+      </Modali.Modal>
       <style jsx>
         {`
           .main-block {
